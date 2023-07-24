@@ -1,0 +1,36 @@
+﻿#if($CurrentCultureId == 1029)
+  <h2>Developerské projekty</h2>
+#else
+  <h2>Developer projects</h2>
+#end  
+
+#foreach($NewProject in $NewProjects)
+#beforeall
+    <div class="helper">
+#each
+        <div id="hp-recommend">
+            <a href="$NewProject.GetLocalizedObject().DetailPageUrl"><img src="$NewProject.GetFirstPhotoLinkForWeb()&size=3" alt="#$NewProject.EstateExtendedInfo.OrderNumber - $NewProject.GetLocalizedObject().Name" width="160" height="120" /></a>
+            <h2><a href="$NewProject.GetLocalizedObject().DetailPageUrl">$NewProject.GetLocalizedObject().Name</a></h2>
+            <p>
+              #if($NewProject.EstateExtendedInfo.OrderNumber)
+                <strong>#if($CurrentCultureId == 1029)Kat. č.#else Catalog. no.#end</strong>: #$NewProject.EstateExtendedInfo.OrderNumber<br />
+              #end
+              #if($NewProject.EstateAddressInfo.City)
+                <strong>#if($CurrentCultureId == 1029)Lokalita#else Locality#end</strong>: $NewProject.EstateAddressInfo.City#if($NewProject.EstateAddressInfo.Region), $NewProject.EstateAddressInfo.Region#end<br />
+              #end
+              
+              #set($minMaxPrice = $NewProject.GetMinMaxPrice())
+              #if($minMaxPrice.MinPrice > 0 || $minMaxPrice.MaxPrice > 0)
+                <strong>#if($CurrentCultureId == 1029)Cena#else Price#end</strong>: $NexusARFormHelper.GetFormatedPrice($minMaxPrice.MinPrice) - $NexusARFormHelper.GetFormatedPrice($minMaxPrice.MaxPrice)<br />
+              #end
+            </p>
+        </div>
+#afterall
+    </div>
+    <p class="right">
+    #if($CurrentCultureId == 1029)<a href="/nabidka/developerske-projekty/index.aspx" class="ico">Více z naší nabídky</a>#else<a href="/en/proposal/developer-projects/index.aspx" class="ico">More from our offer</a>#end
+    </p>
+    <hr class="hid cleaner" />
+    <div class="spacer"></div>
+#end
+

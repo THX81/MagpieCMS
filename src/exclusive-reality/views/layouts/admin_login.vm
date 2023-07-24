@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="copyright" content="Richard Straka, Miroslav Malat" />
+    <meta name="author" content="ASP.NET: Richard Straka" />
+    <meta name="author" content="Grafika, XHTML, CSS: Miroslav Malát [mir2001@post.cz]" />
+	<meta name="description" content="Administrační rozhraní CMS MagPie" />
+	
+    <link href="$siteroot/admin_exclusivereal/css/screen.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <!--<script type="text/javascript" src="$siteroot/admin_exclusivereal/js/all.js"></script>-->
+    
+    <title>$!title - CMS MagPie | Admin COMPANY</title>
+$!head
+  </head>
+  <body>
+    <div id="hp-login">
+    
+			$childContent
+			
+    </div>
+    
+$!scripts
+  </body>
+</html>

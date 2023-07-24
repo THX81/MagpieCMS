@@ -1,0 +1,673 @@
+﻿#if ($SelectedEstate)
+
+    #capturefor(title) $SelectedEstate.EstateExtendedInfo.OrderNumber - $SelectedEstate.GetLocalizedObject().Name #end
+    #capturefor(scripts) <script type="text/javascript" src="/js/viewer.js"></script>  #end
+
+
+
+
+#if($SelectedEstate.DeveloperProject)
+    <h2>$SelectedEstate.EstateExtendedInfo.OrderNumber - $SelectedEstate.DeveloperProject</h2>
+#else
+    <h2>$SelectedEstate.EstateExtendedInfo.OrderNumber - $SelectedEstate.GetLocalizedObject().Name</h2>
+#end
+#if ($CurrentPage.Contents)$CurrentPage.Contents#end
+
+#if ($SelectedEstate.GetAllPhotosLinksForWeb().Count > 0)
+  <a href="$SelectedEstate.GetFirstPhotoLinkForWeb()" rel="viewer"><img src="$SelectedEstate.GetFirstPhotoLinkForWeb()&amp;size=2" id="big" alt="$SelectedEstate.EstateExtendedInfo.OrderNumber" width="240" /></a>
+#end
+
+
+#if($SelectedEstate.DeveloperProject)
+    <br />
+    <h3>#if($CurrentCultureId == 1029)Developerský projekt:#else Developer project:#end <a href="$SelectedEstate.DeveloperProject.GetLocalizedObject().DetailPageUrl">$SelectedEstate.DeveloperProject</a></h3>
+#end
+
+#if($SelectedEstate.EstateExtendedInfo)
+  $NexusARFormHelper.GetFormatedValue('OrderNumber', $SelectedEstate.EstateExtendedInfo, '<h3>{0} #{1}</h3>')
+  $NexusARFormHelper.GetFormatedValue('VirtualTourUrl', $SelectedEstate.EstateExtendedInfo, '<a href="{1}">{0}</a>')
+#end
+
+#if($SelectedEstate.GetLocalizedObject().BasicDescription)
+  $NexusARFormHelper.EnsureParagraphOverContent($SelectedEstate.GetLocalizedObject().BasicDescription)
+#end
+#if($SelectedEstate.GetLocalizedObject().FullDescription)
+  $NexusARFormHelper.EnsureParagraphOverContent($SelectedEstate.GetLocalizedObject().FullDescription)
+#end
+#if($SelectedEstate.GetLocalizedObject().AdditionalDescription)
+  $NexusARFormHelper.EnsureParagraphOverContent($SelectedEstate.GetLocalizedObject().AdditionalDescription)
+#end
+
+
+<ul>
+  <li>
+  <strong>#if($CurrentCultureId == 1029)Stav nabídky#else Offer status#end</strong>:
+  
+  #if ($SelectedEstate.Saled)
+    #if($CurrentCultureId == 1029)Prodáno#else Saled#end
+  #elseif ($SelectedEstate.Rented)
+    #if($CurrentCultureId == 1029)Pronajato#else Rented#end
+  #elseif ($SelectedEstate.Reserved)
+    #if($CurrentCultureId == 1029)Rezervace#else Reserved#end
+  #else
+    #if($CurrentCultureId == 1029)Aktivní#else Active#end
+  #end
+  </li>
+  <!--<li>Poslední změna: 15.11.2007</li> -->
+</ul>
+
+<div class="cleaner"></div>
+<div class="spacer"></div>
+
+#if($CurrentCultureId == 1029)
+  <h2>Detailní informace</h2>
+#else
+  <h2>Detail information</h2>
+#end
+
+<table cellspacing="0">
+#if($SelectedEstate.EstateAddressInfo)
+  $NexusARFormHelper.GetFormatedValue('Street', $SelectedEstate.EstateAddressInfo, '<tr><th class="w240">{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('City', $SelectedEstate.EstateAddressInfo, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('Zip', $SelectedEstate.EstateAddressInfo, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('Region', $SelectedEstate.EstateAddressInfo, '<tr><th>{0}</th><td>{1}</td></tr>')
+#end
+
+#if($SelectedEstate.EstateProperties)
+  $NexusARFormHelper.GetFormatedValue('Disposition', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('FlatSize', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('Floor', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('TotalFloors', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('FloorSize', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('FlatsTotal', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('FlatsTypes', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('TotalFlatsSize', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('ReconstructionYear', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('BuildYear', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('ColaudationYear', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('ForMovement', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('BuildedPlaceSize', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('UseablePlaceSize', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('PropertySize', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('TeracesSize', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('GardenSize', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('UndergroundSize', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+  $NexusARFormHelper.GetFormatedValue('PlaceSize', $SelectedEstate.EstateProperties, '<tr><th>{0}</th><td>{1}</td></tr>')
+
+  #if($SelectedEstate.EstateProperties.GetLocalizedObject())
+    $NexusARFormHelper.GetFormatedValue('ObjectType', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('BuildingType', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('BuildingState', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('EstateType', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('NoLiveArea', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Constructions', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('OwnerShip', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Properties', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('LocalityInfo', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Green', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Sites', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Comunication', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Telecomunication', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Electricity', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Water', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Channel', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Heating', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Gas', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Trafic', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Facilities', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('UseType', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('SocialMachine', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('Stairs', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+    $NexusARFormHelper.GetFormatedValue('OtherInfo', $SelectedEstate.EstateProperties.GetLocalizedObject(), '<tr><th>{0}</th><td>{1}</td></tr>')
+  #end
+#end
+
+
+
+#if($SelectedEstate.EstatePriceInfo.PriceValue && $SelectedEstate.EstatePriceInfo.currencyType)
+  <tr>
+    <th>
+      #if($CurrentCultureId == 1029)
+        Cena
+      #else
+        Price
+      #end
+    </th>
+    <td>
+        <span style="white-space:nowrap;">$NexusARFormHelper.GetFormatedPrice($SelectedEstate.EstatePriceInfo.PriceValue) $SelectedEstate.EstatePriceInfo.currencyType  #if($SelectedEstate.EstatePriceInfo.PriceType)$SelectedEstate.EstatePriceInfo.PriceType#end</span><br />
+        #if($SelectedEstate.GetLocalizedObject().PriceComment)
+            <br />$SelectedEstate.GetLocalizedObject().PriceComment
+        #end
+    </td>
+  </tr> 
+#end
+</table>
+
+
+#if($SelectedEstate.EstateManCard)
+<div class="contact">
+  <h3>$NexusARFormHelper.GetLocalizedPropertyName('EstateManCard', $SelectedEstate)</h3>
+  <table cellspacing="0">
+      <tr>
+        #if($CurrentCultureId == 1029)
+          <th>Makléř</th>
+        #else
+          <th>Broker</th>
+        #end
+        <td>$NexusARFormHelper.GetFormatedValue('Title', $SelectedEstate.EstateManCard, '{1}') $NexusARFormHelper.GetFormatedValue('FirstName', $SelectedEstate.EstateManCard, '{1}') $NexusARFormHelper.GetFormatedValue('LastName', $SelectedEstate.EstateManCard, '{1}')</td></tr>
+      $NexusARFormHelper.GetFormatedValue('Email', $SelectedEstate.EstateManCard, '<tr><th>{0}</th><td><a href="mailto:{1}">{1}</a></td></tr>')
+      $NexusARFormHelper.GetFormatedValue('Telephone', $SelectedEstate.EstateManCard, '<tr><th>{0}</th><td>{1}</td></tr>')
+      $NexusARFormHelper.GetFormatedValue('Mobil', $SelectedEstate.EstateManCard, '<tr><th>{0}</th><td>{1}</td></tr>')
+  </table>
+</div>
+#end
+
+
+#if($SelectedEstate.EstateAttachments)
+  #if($SelectedEstate.EstateAttachments.Count > 0)
+    <div class="cleaner"></div>
+    <div class="spacer"></div>
+
+    <h2>$NexusARFormHelper.GetLocalizedPropertyName('EstateAttachments', $SelectedEstate)</h2>
+      <ul class="dwnl">
+        #foreach($att in $SelectedEstate.EstateAttachments)
+          <li class="typ-souboru">$att</li>
+        #end
+      </ul>
+  #end
+#end
+
+
+<div class="cleaner"></div>
+<div class="spacer"></div>
+
+<div id="foto">
+  #if($CurrentCultureId == 1029)
+    <h2>Fotografie</h2>
+  #else
+    <h2>Gallery</h2>
+  #end
+
+
+  #if ($SelectedEstate.GetAllPhotosLinksForWeb().Count > 0)
+    #foreach($img in $SelectedEstate.GetAllPhotosLinksForWeb())
+      <a href="$img.Url" rel="viewer"><img src="$img.Url&amp;size=4" alt="$img.Description" /></a>
+    #end
+  #end
+</div>
+
+
+
+
+
+<!-- // tady to riso posteluj -->
+<div class="cleaner"></div>
+<div class="spacer"></div>
+
+<div class="senders fll">
+  <h3>
+  #if($CurrentCultureId == 1029)
+    Odeslat známému
+  #else
+    Send to friend
+  #end
+  </h3>
+  <form method="get" action="/form/ProcessEstateMessage.aspx">
+    <input type="hidden" name="returnurl" value="$CurrentPage.GetUrl(true)" />
+    <input type="hidden" name="messagetype" value="sendfriend" />
+    <input type="hidden" name="detail" value="$detail" />
+    <p>
+      #if($CurrentCultureId == 1029)
+          Pomocí tohoto formuláře můžete zaslat odkaz na tuto stránku Vašemu známému.
+      #else
+          With this form you can send this page link to your friend.
+      #end
+    </p>
+    <table cellspacing="0">
+      <tr>
+        <th>
+        E-mail:
+        </th>
+        <td>
+          <input type="text" name="email"#if($email) value="$email"#end />
+        </td>
+      </tr>
+    </table>
+    <p class="right">
+      #if($CurrentCultureId == 1029)
+      <input type="submit" value="odeslat" class="send" />
+      #else
+      <input type="submit" value="send" class="send" />
+      #end
+    </p>
+  </form>
+#if($result && $messagetype == "sendfriend")
+
+    #if($result=="true")
+        <p><strong>
+        #if($CurrentCultureId == 1029)
+            Email byl odeslán.<br />Děkujeme
+        #else
+            Email was sended.<br />Thank you
+        #end
+        </strong><br /><br /><br /></p>
+    #elseif($result=="false" && $error=="email")
+        <p><strong>
+        #if($CurrentCultureId == 1029)
+            Emailová adresa není správně vyplněná.
+        #else
+            Bad email address.
+        #end
+        </strong><br /><br /><br /></p>
+    #else
+        <p><strong>
+        #if($CurrentCultureId == 1029)
+            Email nebyl z technických důvodů odeslán.<br /><br />Zkuste prosím odeslat později.
+        #else
+            There is unexpected error.<br /><br />Please, try it again later.
+        #end
+        <br /><!--  $error --></strong><br /><br /><br /></p>
+    #end
+    
+#end
+</div>
+
+<div class="senders flr">
+  <h3>#if($CurrentCultureId == 1029)Ozvěte se nám#else Contact us#end</h3>
+  <form method="get" action="/form/ProcessEstateMessage.aspx">
+    <input type="hidden" name="returnurl" value="$CurrentPage.GetUrl(true)" />
+    <input type="hidden" name="messagetype" value="contactus" />
+    <input type="hidden" name="detail" value="$detail" />
+    <input type="hidden" name="ordernumber" value="$SelectedEstate.EstateExtendedInfo.OrderNumber"/>
+  <p>#if($CurrentCultureId == 1029)Máte-li zájem o tuto nemovitost, kontaktujte nás.#else If you interested about this estate, contact us please.#end</p>
+  <table cellspacing="0">
+    <tr>
+      <th>
+  #if($CurrentCultureId == 1029)
+      Vaše jméno:
+  #else
+      Your name:
+  #end
+      </th>
+      <td><input type="text" name="name"#if($name) value="$name"#end /></td>
+    </tr>
+    <tr>
+      <th>
+  #if($CurrentCultureId == 1029)
+      Váš telefon:
+  #else
+      Your phone:
+  #end
+      </th>
+      <td><input type="text" name="phone"#if($phone) value="$phone"#end /></td>
+    </tr>
+    <tr>
+      <th>
+  #if($CurrentCultureId == 1029)
+    Váš e-mail:
+  #else
+    Your e-mail:
+  #end
+      </th>
+      <td><input type="text" name="email"#if($email) value="$email"#end /></td>
+    </tr>
+    <tr>
+      <th>
+  #if($CurrentCultureId == 1029)
+    Poznámka:
+  #else
+    Comment:
+  #end
+      </th>
+      <td><textarea name="comment" style="width:155px;" rows="2">#if($comment) $comment#end</textarea></td>
+    </tr>
+  </table>
+  <p class="right">
+      #if($CurrentCultureId == 1029)
+      <input type="submit" value="odeslat" class="send" />
+      #else
+      <input type="submit" value="send" class="send" />
+      #end
+    </p>
+  </form>
+#if($result && $messagetype == "contactus")
+
+    #if($result == "true")
+        <p><strong>
+        #if($CurrentCultureId == 1029)
+            Email byl odeslán.<br />Děkujeme
+        #else
+            Email was sended.<br />Thank you
+        #end
+        </strong><br /><br /><br /></p>
+    #elseif($result=="false")
+        #if($error == "email_phone_empty")
+            <p><strong>
+            #if($CurrentCultureId == 1029)
+                Musí být vyplněn alespoň email nebo telefon.
+            #else
+                Email or phone are mandatory.
+            #end
+            </strong><br /><br /><br /></p>
+        #elseif($error == "email")
+            <p><strong>
+            #if($CurrentCultureId == 1029)
+                Emailová adresa není správně vyplněná.
+            #else
+                Bad email address.
+            #end
+            </strong><br /><br /><br /></p>
+        #else
+            <p><strong>
+            #if($CurrentCultureId == 1029)
+                Email nebyl z technických důvodů odeslán.<br /><br />Zkuste prosím odeslat později.
+            #else
+                There is unexpected error.<br /><br />Pleas, try it again later.
+            #end
+            <br /><!--  $error --></strong><br /><br /><br /></p>
+        #end
+    #end
+    
+#end
+</div>
+
+
+#if($result)
+
+    <a id="bottom"></a>
+    
+#end
+<!-- // tady to riso posteluj: konec -->
+
+
+
+
+
+
+#else
+    
+   
+   
+   
+   
+   #if($originalurl != "/index.aspx" && $originalurl != "/Index.aspx" && $originalurl != "/" && $originalurl != "/en/index.aspx" && $originalurl != "/en/Index.aspx" && $originalurl != "/en/") 
+    <h2>$CurrentPage.Title</h2>
+   #end
+   
+   #if ($CurrentPage.Contents)$CurrentPage.Contents#end
+
+
+
+    <p class="filter">
+    <a href="#" onclick="show(this, document.getElementById('more'));">
+      #if($CurrentCultureId == 1029)
+        Filtrovat nemovitosti
+      #else
+        Search properties
+      #end
+    </a>
+    </p>
+  
+  <div id="more">
+    <form action="#if($originalurl == "/index.aspx" || $originalurl == "/Index.aspx" || $originalurl == "/")/nabidka/index.aspx#elseif($originalurl == "/en/index.aspx" || $originalurl == "/en/Index.aspx" || $originalurl == "/en/")/$CurrentPage.GetEnsuredCulture(true)/proposal/index.aspx#else$CurrentPage.GetUrl(true)#end" method="get" class="search">
+      <fieldset id="pch">
+          <input type="hidden" name="searching" value="true" />
+        #if($CurrentCultureId == 1029)
+          <legend>Typ nemovitosti</legend>
+        #else
+          <legend>Type of property</legend>
+        #end
+        <select name="EstateType">
+          <option value=""></option>
+        #foreach($type in $EstateTypes)
+          <option value="$type.Id"#if($type.Id == $EstateType) selected="selected"#end>$type</option>
+        #end
+        </select>
+        <select name="EstateOfferType">
+          <option value=""></option>
+        #foreach($type in $EstateOfferTypes)
+          <option value="$type.Id"#if($type.Id == $EstateOfferType) selected="selected"#end>$type</option>
+        #end
+        </select>
+      </fieldset>
+      
+      <fieldset id="ps">
+        #if($CurrentCultureId == 1029)
+	        <legend>Velikost nemovitosti</legend>
+			<label for="ps01"><input type="checkbox" id="ps01" name="ps_01"#if($ps_01) checked="checked"#end /> garsoniéra</label>
+			<label for="ps02"><input type="checkbox" id="ps02" name="ps_02"#if($ps_02) checked="checked"#end /> 1+kk</label>
+			<label for="ps03"><input type="checkbox" id="ps03" name="ps_03"#if($ps_03) checked="checked"#end /> 1+1</label>
+			<label for="ps04"><input type="checkbox" id="ps04" name="ps_04"#if($ps_04) checked="checked"#end /> 2+kk</label>
+			<label for="ps05"><input type="checkbox" id="ps05" name="ps_05"#if($ps_05) checked="checked"#end /> 2+1</label>
+			<label for="ps06"><input type="checkbox" id="ps06" name="ps_06"#if($ps_06) checked="checked"#end /> 3+kk</label>
+			<label for="ps07"><input type="checkbox" id="ps07" name="ps_07"#if($ps_07) checked="checked"#end /> 3+1</label>
+			<label for="ps08"><input type="checkbox" id="ps08" name="ps_08"#if($ps_08) checked="checked"#end /> 4+kk</label>
+			<label for="ps09"><input type="checkbox" id="ps09" name="ps_09"#if($ps_09) checked="checked"#end /> 4+1</label>
+			<label for="ps10"><input type="checkbox" id="ps10" name="ps_10"#if($ps_10) checked="checked"#end /> 5 a více</label>
+        #else
+            <legend>Property size</legend>
+			<label for="ps01"><input type="checkbox" id="ps01" name="ps_01"#if($ps_01) checked="checked"#end /> garsoniéra</label>
+			<label for="ps02"><input type="checkbox" id="ps02" name="ps_02"#if($ps_02) checked="checked"#end /> 1+kitchen corner+living room</label>
+			<label for="ps03"><input type="checkbox" id="ps03" name="ps_03"#if($ps_03) checked="checked"#end /> 1+1</label>
+			<label for="ps04"><input type="checkbox" id="ps04" name="ps_04"#if($ps_04) checked="checked"#end /> 2+kitchen corner+living room</label>
+			<label for="ps05"><input type="checkbox" id="ps05" name="ps_05"#if($ps_05) checked="checked"#end /> 2+1</label>
+			<label for="ps06"><input type="checkbox" id="ps06" name="ps_06"#if($ps_06) checked="checked"#end /> 3+kitchen corner+living room</label>
+			<label for="ps07"><input type="checkbox" id="ps07" name="ps_07"#if($ps_07) checked="checked"#end /> 3+1</label>
+			<label for="ps08"><input type="checkbox" id="ps08" name="ps_08"#if($ps_08) checked="checked"#end /> 4+kitchen corner+living room</label>
+			<label for="ps09"><input type="checkbox" id="ps09" name="ps_09"#if($ps_09) checked="checked"#end /> 4+1</label>
+			<label for="ps10"><input type="checkbox" id="ps10" name="ps_10"#if($ps_10) checked="checked"#end /> 5 a více</label>
+        #end
+        
+        <br class="cleaner" /><!-- //for IE6,5 -->
+      </fieldset>
+        
+      <fieldset id="pp">
+        #if($CurrentCultureId == 1029)
+          <legend>Cena nemovitosti</legend>
+          od <input type="text" name="priceFrom" value="#if($priceFrom)$priceFrom#end" />
+          do <input type="text" name="priceTo" value="#if($priceTo)$priceTo#end" />
+        #else
+          <legend>Price of property</legend>
+          from <input type="text" name="priceFrom" value="#if($priceFrom)$priceFrom#end" />
+          to <input type="text" name="priceTo" value="#if($priceTo)$priceTo#end" />
+        #end        
+      </fieldset>
+        
+      <fieldset id="pl">
+        #if($CurrentCultureId == 1029)
+            <legend>Lokalita nemovitosti</legend>
+	        <label for="pl01"><input type="checkbox" id="pl01" name="pl_01"#if($pl_01) checked="checked"#end /> Praha 1</label>
+	        <label for="pl02"><input type="checkbox" id="pl02" name="pl_02"#if($pl_02) checked="checked"#end /> Praha 2</label>
+	        <label for="pl03"><input type="checkbox" id="pl03" name="pl_03"#if($pl_03) checked="checked"#end /> Praha 3</label>
+	        <label for="pl04"><input type="checkbox" id="pl04" name="pl_04"#if($pl_04) checked="checked"#end /> Praha 4</label>
+	        <label for="pl05"><input type="checkbox" id="pl05" name="pl_05"#if($pl_05) checked="checked"#end /> Praha 5</label>
+	        <label for="pl06"><input type="checkbox" id="pl06" name="pl_06"#if($pl_06) checked="checked"#end /> Praha 6</label>
+	        <label for="pl07"><input type="checkbox" id="pl07" name="pl_07"#if($pl_07) checked="checked"#end /> Praha 7</label>
+	        <label for="pl08"><input type="checkbox" id="pl08" name="pl_08"#if($pl_08) checked="checked"#end /> Praha 8</label>
+	        <label for="pl09"><input type="checkbox" id="pl09" name="pl_09"#if($pl_09) checked="checked"#end /> Praha 9</label>
+	        <label for="pl10"><input type="checkbox" id="pl10" name="pl_10"#if($pl_10) checked="checked"#end /> Praha 10</label>
+	        <label for="pl11"><input type="checkbox" id="pl11" name="pl_11"#if($pl_11) checked="checked"#end /> Praha východ</label>
+	        <label for="pl12"><input type="checkbox" id="pl12" name="pl_12"#if($pl_12) checked="checked"#end /> Praha západ</label>
+	        <label for="pl13"><input type="checkbox" id="pl13" name="pl_13"#if($pl_13) checked="checked"#end /> Ostatní</label>
+        #else
+            <legend>Property location</legend>
+	        <label for="pl01"><input type="checkbox" id="pl01" name="pl_01"#if($pl_01) checked="checked"#end /> Prague 1</label>
+	        <label for="pl02"><input type="checkbox" id="pl02" name="pl_02"#if($pl_02) checked="checked"#end /> Prague 2</label>
+	        <label for="pl03"><input type="checkbox" id="pl03" name="pl_03"#if($pl_03) checked="checked"#end /> Prague 3</label>
+	        <label for="pl04"><input type="checkbox" id="pl04" name="pl_04"#if($pl_04) checked="checked"#end /> Prague 4</label>
+	        <label for="pl05"><input type="checkbox" id="pl05" name="pl_05"#if($pl_05) checked="checked"#end /> Prague 5</label>
+	        <label for="pl06"><input type="checkbox" id="pl06" name="pl_06"#if($pl_06) checked="checked"#end /> Prague 6</label>
+	        <label for="pl07"><input type="checkbox" id="pl07" name="pl_07"#if($pl_07) checked="checked"#end /> Prague 7</label>
+	        <label for="pl08"><input type="checkbox" id="pl08" name="pl_08"#if($pl_08) checked="checked"#end /> Prague 8</label>
+	        <label for="pl09"><input type="checkbox" id="pl09" name="pl_09"#if($pl_09) checked="checked"#end /> Prague 9</label>
+	        <label for="pl10"><input type="checkbox" id="pl10" name="pl_10"#if($pl_10) checked="checked"#end /> Prague 10</label>
+	        <label for="pl11"><input type="checkbox" id="pl11" name="pl_11"#if($pl_11) checked="checked"#end /> Prague east</label>
+	        <label for="pl12"><input type="checkbox" id="pl12" name="pl_12"#if($pl_12) checked="checked"#end /> Prague west</label>
+	        <label for="pl13"><input type="checkbox" id="pl13" name="pl_13"#if($pl_13) checked="checked"#end /> Others</label>
+        #end
+        
+       </fieldset>
+      
+	  <fieldset id="catno">
+      #if($CurrentCultureId == 1029)
+        <legend>Katalogové číslo</legend>
+      #else
+        <legend>Catalogue number</legend>
+      #end
+	    
+	    <label for="catNum">
+        #if($CurrentCultureId == 1029)
+          Kat. č.
+        #else
+          Cat. no.
+        #end
+        <input type="text" id="catNum" name="catNum" value="#if($catNum)$catNum#end" />
+	      
+			</label>
+
+          #if($CurrentCultureId == 1029)
+            <input type="submit" value="Vyhledat" class="send" />
+          #else
+            <input type="submit" value="Search" class="send" />
+          #end
+	  </fieldset>
+    </form>
+  </div>
+
+
+#capturefor(scripts)
+<script type="text/javascript">
+<!--
+    function show(sender, element) {
+			var state = 'block';
+			if (element.style.display=='block') {
+			  state = 'none';
+			}  else {
+			  state = 'block'
+			}
+			document.cookie = "advanced_search_display=" + state;
+			element.style.display = state;
+    }
+
+    function show_hide_advanced_search_load(element) {
+			var display = "none";
+      var cookieList=document.cookie.split("; ");
+      for (var i=0; i < cookieList.length; i++) {
+				var name = cookieList[i].split("=");
+				if (name[0] == "advanced_search_display") {
+          element.style.display=name[1];
+				}
+			}
+    }
+   
+    show_hide_advanced_search_load(document.getElementById('more'));
+    
+	
+   #if ($Estates.Length > 0)
+    if (document.getElementById('more'))
+    {
+          document.getElementById('more').style.display='block';
+    }
+   #else
+    if (document.getElementById('more'))
+    {
+          document.getElementById('more').style.display='none';
+    }
+   #end
+//-->
+</script>
+#end        
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #foreach($estate in $Estates)
+    #beforeall
+      <table cellspacing="0" class="list">
+        <tr>
+          <th></th>
+          <th><!--<strong>seřadit podle</strong> <a href="#">ID &darr;</a> | <a href="#">Cena &darr;</a> | <a href="#">Lokalita &darr;</a> | <a href="#">Velikost &darr;</a> | <a href="#">Počet místností &darr;</a> --></th>
+        </tr>
+    #each
+        <tr>
+          <td class="vtop">
+              <a href="$estate.GetLocalizedObject().DetailPageUrl"><img src="$estate.GetFirstPhotoLinkForWeb()&amp;size=3" alt="$estate.EstateExtendedInfo.OrderNumber - $estate.GetLocalizedObject().Name" width="105" /></a>
+          </td>
+          <td>
+            <strong><a href="$estate.GetLocalizedObject().DetailPageUrl">$estate.EstateExtendedInfo.OrderNumber - #if($estate.DeveloperProject) $estate.DeveloperProject #else $estate.GetLocalizedObject().Name #end</a></strong><br />
+            
+
+            #if($estate.EstatePriceInfo.PriceValue && $estate.EstatePriceInfo.currencyType)
+              #if($CurrentCultureId == 1029)
+                <em>Cena</em>:
+              #else
+                <em>Price</em>:
+              #end
+                $NexusARFormHelper.GetFormatedPrice($estate.EstatePriceInfo.PriceValue) $estate.EstatePriceInfo.currencyType  #if($estate.EstatePriceInfo.PriceType)$estate.EstatePriceInfo.PriceType#end<br />
+            #end
+            
+            #if($estate.EstateAddressInfo.region)
+              #if($CurrentCultureId == 1029)
+                <em>Lokalita:</em>
+              #else
+                <em>Location:</em>
+              #end
+               $estate.EstateAddressInfo.region<br />
+            #end
+            
+            #if($estate.EstateProperties.FlatSize && $estate.EstateProperties.FlatSize.Length > 0)
+              #if($CurrentCultureId == 1029)
+                <em>Velikost:</em>
+              #else
+                <em>Flat size:</em>
+              #end
+                $estate.EstateProperties.FlatSize<br />
+            #end
+            
+            #if($estate.GetLocalizedObject().BasicDescription)
+              #if($CurrentCultureId == 1029)
+                <em>Popis:</em>
+              #else
+                <em>Description:</em>
+              #end
+                $estate.GetLocalizedObject().BasicDescription<br />
+            #end
+            
+            #if($estate.DeveloperProject)
+              #if($CurrentCultureId == 1029)
+                <em>Developerský projekt:</em>
+              #else
+                <em>Developer project:</em>
+              #end
+                <a href="$estate.DeveloperProject.GetLocalizedObject().DetailPageUrl">$estate.DeveloperProject</a><br />
+            #end
+            
+          </td>
+        </tr>
+	#nodata
+	    <!--Nezobrazujeme na HP-->
+        #if($originalurl != "/index.aspx" && $originalurl != "/Index.aspx" && $originalurl != "/" && $originalurl != "/en/index.aspx" && $originalurl != "/en/Index.aspx" && $originalurl != "/en/")
+            #if($CurrentCultureId == 1029)
+                <p><strong>Momentálně nejsou v nabídce žádné nemovitosti.</strong></p>
+            #else
+                <p><strong>0 result(s) has/have been found.</strong></p>
+            #end
+        #end
+    #afterall
+      </table>
+    #end
+   
+   #if($PagerHtml)
+        $PagerHtml
+   #end
+#end

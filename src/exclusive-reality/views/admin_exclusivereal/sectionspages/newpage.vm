@@ -1,0 +1,49 @@
+﻿#capturefor(title) Správa stránky #end
+
+#capturefor(head)
+    <link rel="stylesheet" type="text/css" media="screen" href="$siteroot/js/wymeditor/skins/default/screen.css" />
+    <script type="text/javascript" src="$siteroot/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="$siteroot/js/wymeditor/jquery.wymeditor.pack.js"></script>
+#end
+
+#capturefor(crumbmenu) <a href="/admin_exclusivereal/">úvodní strana</a> | <a href="/admin_exclusivereal/sectionspages/index.aspx">Sekce / stránky</a> | <strong>Vytvořit novou stránku</strong> #end
+#capturefor(sectionspages_active)class="active"#end
+#capturefor(sectionspages_submenu)
+<ul>
+  <li class="active"><a href="/admin_exclusivereal/sectionspages/newpage.aspx" href="Vytvořit novou stránku">Vytvořit novou stránku</a></li>
+  <li><a href="/admin_exclusivereal/sectionspages/newsection.aspx" href="Vytvořit novou sekci">Vytvořit novou sekci</a></li>
+</ul>
+#end
+#capturefor(custommenu)
+<div id="pagestree">
+#component(SectionsPagesTreeMenu)
+</div>
+#end
+
+
+
+<div id="right">
+<h2>Vytvoření nové stránky</h2>
+$NexusARFormHelper.FormTag("%{action='CreatePage'}")
+
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "Title", $Page)</div>
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "Name", $Page)</div>
+<div>
+$NexusARFormHelper.LabelFor("Page.PageTemplate", "Šablona stránky:")
+$NexusARFormHelper.Select("Page.PageTemplate", $AllPageTemplates, "%{value='Id', text='Title'}")
+</div>
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "Contents", $Page)</div>
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "OrderPriority", $Page)</div>
+<div>Datum vytvoření: $Page.Created</div>
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "Published", $Page)</div>
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "Section", $Page)</div>
+<div>
+$NexusARFormHelper.LabelFor("Page.ConnectedPageId", "Propojení na jinou stránku (používá se pro přepínání jazykových verzí stránky):")
+$NexusARFormHelper.Select("Page.ConnectedPageId", $AllPages, "%{value='Id', text='Title', firstoption='Prázdná hodnota', firstoptionvalue=''}")
+</div>
+<br />
+
+$NexusARFormHelper.Submit("Uložit", "%{class='wymupdate'}")
+
+$NexusARFormHelper.EndFormTag()
+</div>

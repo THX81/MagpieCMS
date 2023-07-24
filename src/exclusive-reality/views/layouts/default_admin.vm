@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="copyright" content="Richard Straka, Miroslav Malat" />
+    <meta name="author" content="ASP.NET: Richard Straka" />
+    <meta name="author" content="Grafika, XHTML, CSS: Miroslav Malát [mir2001@post.cz]" />
+	<meta name="description" content="Administrační rozhraní CMS MagPie" />
+	
+    <link href="$siteroot/admin_exclusivereal/css/screen.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <link href="$siteroot/admin_exclusivereal/css/screen_admin.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <!--<script type="text/javascript" src="$siteroot/admin_exclusivereal/js/all.js"></script>-->
+    
+    <title>$!title - CMS MagPie | Admin COMPANY</title>
+$!head
+  </head>
+  <body>
+    <div id="balicek">
+    
+<!-- hlavicka -->
+      <div id="hlavicka">
+        <h1><a href="/admin_exclusivereal/" title="[home page]">CMS MagPie | Company<span></span></a></h1>
+        
+        <hr class="nod" />
+
+				<p class="spaceman">
+	        <a href="#menu">k menu &darr;</a> | <a href="#text-box">k obsahu &darr;</a>
+	      </p>
+
+        <hr class="nod" />
+
+        <p>
+					$UserName | $Url.Link('Odhlásit se', "%{area='',controller='login', action='logout'}")<br />
+					Celkem inzerátů: $OffersCount
+        </p>
+      </div>
+ <!-- // hlavicka -->
+
+      <hr class="nod" />
+      <p id="navbar">
+        Nacházíte se: $!crumbmenu<br />
+      </p>
+
+<!-- Hlavní obsah -->
+      <div id="text-box">
+			$childContent
+      </div><!-- // hlavní obsah -->
+
+      <hr class="nod" />
+      <!-- Menu -->
+      <div id="menu">
+        <h3 class="nod">Menu</h3>
+        <ul>
+            <li $!admin_exclusivereal_active><a href="/admin_exclusivereal/index.aspx">Úvodní strana</a></li>
+            <li $!sectionspages_active>
+                <a href="/admin_exclusivereal/sectionspages/index.aspx">Sekce / stránky</a>
+                $!sectionspages_submenu
+            </li>
+            <li $!pagetemplates_active><a href="/admin_exclusivereal/pagetemplates/index.aspx">Šablony stránek</a></li>
+            <li $!estatemessages_active><a href="/admin_exclusivereal/estatemessages/index.aspx">Poptávky/nabídky</a></li>
+            <li $!estates_active>
+                <a href="/admin_exclusivereal/estates/index.aspx">Správa Inzerátů</a>
+                $!estates_submenu
+            </li>
+            <li $!actualities_active><a href="/admin_exclusivereal/actualities/index.aspx">Aktuality</a></li>
+            <li $!cultures_active><a href="/admin_exclusivereal/cultures/index.aspx">Kultury</a></li>
+        </ul>
+      </div><!-- // menu -->
+        $!custommenu
+      
+	  <div class="cleaner"></div>
+      
+      <p class="spaceman">
+        <a href="#text-box">k hlavnímu obsahu &uarr;</a>
+      </p>
+    </div><!-- // balicek -->
+    
+    <hr class="nod" />
+
+	<div id="paticka">
+	    <p class="fll">
+	      &copy; <a href="#">MagPie Team</a>
+	    </p>
+	</div>
+    
+$!scripts
+  </body>
+</html>

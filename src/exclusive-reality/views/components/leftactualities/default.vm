@@ -1,0 +1,11 @@
+﻿  <h2>#if($CurrentCultureId == 1029)Aktuality#else Newsreels#end</h2>
+#foreach($actuality in $Actualities)
+#beforeall
+  <dl>
+#each
+    <dt><small>$actuality.Created.ToShortDateString()</small> | $actuality.GetLocalizedObject().Heading</dt>
+    <dd>$actuality.GetLocalizedObject().Perex</dd>
+    <dd class="right"><a href="$actuality.GetUrl()">#if($CurrentCultureId == 1029)více#else more#end</a></dd>
+#afterall
+  </dl>
+#end

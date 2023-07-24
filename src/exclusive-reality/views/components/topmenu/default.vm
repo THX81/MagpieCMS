@@ -1,0 +1,15 @@
+﻿        <h3 class="nod">Menu</h3>
+#foreach($node in $Nodes)
+#beforeall
+              <ul>
+#each
+#if($node)
+<li#if($originalurl.StartsWith($node.GetUrl(true))) class="active"#end onmouseover="this.className = 'menuon'" onmouseout="this.className = 'menuoff'">
+    <a href="$node.GetUrl(true)#if (!$node.GetUrl(true).Contains(".aspx"))/index.aspx#end">$node.Title</a>
+    $TopMenu.GetSubNodesMenu($node)
+</li>
+#end
+#afterall
+                #if($LastNode)<li class="last#if($originalurl.Contains($LastNode.GetUrl(true))) active#end"><a href="$LastNode.GetUrl(true)/index.aspx">$LastNode.Title</a></li>#end
+              </ul>
+#end

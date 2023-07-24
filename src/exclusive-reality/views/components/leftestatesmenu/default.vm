@@ -1,0 +1,16 @@
+﻿#foreach($section in $Sections)
+#beforeall
+              <ul  class="menu">
+#each
+#if($section && $section.Name != "index")
+<li#if($originalurl.StartsWith($section.GetUrl(true))) class="active"#end><strong>$section.Title</strong>
+<ul>
+#foreach($node in $section.GetSectionNodes(true))
+<li><a href="$node.GetUrl(true)">$node.Title</a></li>
+#end
+</ul>
+</li>
+#end
+#afterall
+              </ul>
+#end

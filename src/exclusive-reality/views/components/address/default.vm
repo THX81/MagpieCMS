@@ -1,0 +1,21 @@
+﻿<!--
+#if($CurrentPage.GetEnsuredCulture(true).Id == 1029)
+  <h2>Adresa</h2>
+  <address>
+		<strong>Investiční a realitní společnost COMPANY</strong><br />
+		Streat<br />
+		110 00 Praha 1<br /><br />
+		Tel.: +420 222&#160;333&nbsp;111<br />
+		E-mail: <a href="mailto:info@email.cz">info@email.cz</a><br /><br />
+  </address>
+#else
+  <h2>Address</h2>
+  <address>
+		<strong>Investiční a realitní společnost COMPANY</strong><br />
+		Streat<br />
+		110 00 Praha 1<br /><br />
+		Tel.: +420 222&#160;333&nbsp;111<br />
+		E-mail: <a href="mailto:info@email.cz">info@email.cz</a><br /><br />
+  </address>
+#end
+-->

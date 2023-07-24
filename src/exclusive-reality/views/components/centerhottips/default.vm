@@ -1,0 +1,31 @@
+﻿#if($CurrentCultureId == 1029)
+  <h2>Doporučujeme</h2>
+#else
+  <h2>We recommend</h2>
+#end  
+
+#foreach($HotTipEstate in $HotTipEstates)
+#beforeall
+<div class="helper">
+#each
+    <div id="hp-recommend">
+        <a href="$HotTipEstate.GetLocalizedObject().DetailPageUrl"><img src="$HotTipEstate.GetFirstPhotoLinkForWeb()&size=2" alt="#$HotTipEstate.EstateExtendedInfo.OrderNumber $HotTipEstate.GetLocalizedObject().Name" width="160" height="120" /></a>
+        <h2><a href="$HotTipEstate.GetLocalizedObject().DetailPageUrl">$HotTipEstate.EstateOfferType, $HotTipEstate.EstateType</a></h2>
+        <p>
+            <strong>#if($CurrentCultureId == 1029)Kat. č.#else Catalog. no.#end</strong>: #$HotTipEstate.EstateExtendedInfo.OrderNumber<br />
+            <strong>#if($CurrentCultureId == 1029)Lokalita#else Locality#end</strong>: #if($HotTipEstate.EstateAddressInfo.Region)$HotTipEstate.EstateAddressInfo.Region#end<br />
+            <strong>#if($CurrentCultureId == 1029)Cena#else Price#end</strong>:
+            #if($HotTipEstate.EstatePriceInfo.PriceValue && $HotTipEstate.EstatePriceInfo.CurrencyType)
+                $NexusARFormHelper.GetFormatedPrice($HotTipEstate.EstatePriceInfo.PriceValue) $HotTipEstate.EstatePriceInfo.CurrencyType  #if($HotTipEstate.EstatePriceInfo.PriceType)$HotTipEstate.EstatePriceInfo.PriceType#end<br />
+            #end 
+            #if($HotTipEstate.DeveloperProject)
+                <strong> #if($CurrentCultureId == 1029) Developerský projekt #else Developer project</a> #end </strong>: $HotTipEstate.DeveloperProject.GetLocalizedObject().Name<br />
+            #end 
+        </p>
+    </div>
+#afterall
+</div>
+
+<hr class="hid cleaner" />
+<div class="spacer"></div>
+#end

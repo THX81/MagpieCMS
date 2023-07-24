@@ -1,0 +1,194 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{610E6A70-7A12-49ED-A8EF-8D99E75FAC77}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExclusiveReality</RootNamespace>
+    <AssemblyName>ExclusiveReality</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Binder, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Castle.Components.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Common.EmailSender, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Castle.Components.Common.EmailSender.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Castle.Components.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.ActiveRecordIntegration, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Castle.Facilities.ActiveRecordIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.NHibernateIntegration, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Castle.Facilities.NHibernateIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MonoRail.ActiveRecordScaffold, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Castle.MonoRail.ActiveRecordScaffold.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MonoRail.ActiveRecordSupport, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Castle.MonoRail.ActiveRecordSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MonoRail.Framework, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Castle.MonoRail.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MonoRail.Framework.Views.NVelocity, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Castle.MonoRail.Framework.Views.NVelocity.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=1.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\admin\EstateMessagesController.cs" />
+    <Compile Include="Controllers\admin\estates\AllEstatesController.cs" />
+    <Compile Include="Controllers\admin\estates\PriceTypesController.cs" />
+    <Compile Include="Controllers\admin\estates\CurrencyTypesController.cs" />
+    <Compile Include="Controllers\admin\estates\EstateOfferTypesController.cs" />
+    <Compile Include="Controllers\admin\estates\EstateTypesController.cs" />
+    <Compile Include="Controllers\admin\TestController.cs" />
+    <Compile Include="Controllers\admin\estates\CompaniesInfoController.cs" />
+    <Compile Include="Controllers\admin\estates\EstateManCardsController.cs" />
+    <Compile Include="Controllers\admin\estates\RegionsController.cs" />
+    <Compile Include="Controllers\admin\estates\DeveloperProjectsController.cs" />
+    <Compile Include="Controllers\admin\PageTemplatesController.cs" />
+    <Compile Include="Controllers\admin\CulturesController.cs" />
+    <Compile Include="Controllers\admin\estates\EstatesController.cs" />
+    <Compile Include="Controllers\FormController.cs" />
+    <Compile Include="Helpers\CacheHelper.cs" />
+    <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Helpers\NexusARFormHelper.cs" />
+    <Compile Include="Controllers\admin\AdminARSmartDispatcherController.cs" />
+    <Compile Include="Controllers\admin\SectionsPagesController.cs" />
+    <Compile Include="Controllers\admin\HomeController.cs" />
+    <Compile Include="Controllers\admin\AdminBaseController.cs" />
+    <Compile Include="Controllers\admin\ActualitiesController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\WebController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Helpers\NexusFormHelper.cs" />
+    <Compile Include="Helpers\NexusARDataBinder.cs" />
+    <Compile Include="Helpers\ValidationHelper.cs" />
+    <Compile Include="HttpHandlers\EstateImageHttpHandler.cs" />
+    <Compile Include="Models\Actuality.cs" />
+    <Compile Include="Helpers\NexusAttributesHelper.cs" />
+    <Compile Include="Models\Attributes\FormGeneratorBehaviorAttribute.cs" />
+    <Compile Include="Models\Base\BusinessObjectBase.cs" />
+    <Compile Include="Models\Base\LocalizationObjectBase.cs" />
+    <Compile Include="Models\Attributes\ClassLocalizationAttribute.cs" />
+    <Compile Include="Models\Attributes\LocalizedPropertiesTypeAttribute.cs" />
+    <Compile Include="Models\Estates\EstateMessage.cs" />
+    <Compile Include="Models\Estates\EstateListProperties.cs" />
+    <Compile Include="Models\Estates\Estate.cs" />
+    <Compile Include="Models\Estates\EstateNestedProperties.cs" />
+    <Compile Include="Models\Test.cs" />
+    <Compile Include="Models\Estates\DeveloperProject.cs" />
+    <Compile Include="Models\PageTemplate.cs" />
+    <Compile Include="Models\Base\ISiteNode.cs" />
+    <Compile Include="Models\Page.cs" />
+    <Compile Include="Models\Attributes\PropertyLocalizationAttribute.cs" />
+    <Compile Include="Models\SampleData.cs" />
+    <Compile Include="Models\Section.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Crud\CrudActionProvider.cs" />
+    <Compile Include="Utils\CommonOperationUtils.cs" />
+    <Compile Include="Utils\CommonUtils.cs" />
+    <Compile Include="ViewComponents\ActualitiesRepeater.cs" />
+    <Compile Include="ViewComponents\Address.cs" />
+    <Compile Include="ViewComponents\CenterHotTips.cs" />
+    <Compile Include="ViewComponents\CenterNewEstates.cs" />
+    <Compile Include="ViewComponents\AdminListFilter.cs" />
+    <Compile Include="ViewComponents\CenterNewProjects.cs" />
+    <Compile Include="ViewComponents\Sitemap.cs" />
+    <Compile Include="ViewComponents\LeftEstatesMenu.cs" />
+    <Compile Include="ViewComponents\EstatesRepeater.cs" />
+    <Compile Include="ViewComponents\DeveloperProjectDetail.cs" />
+    <Compile Include="ViewComponents\DeveloperProjectsList.cs" />
+    <Compile Include="ViewComponents\LeftMenu.cs" />
+    <Compile Include="ViewComponents\LeftActualities.cs" />
+    <Compile Include="ViewComponents\EstatesAdminMenu.cs" />
+    <Compile Include="ViewComponents\LocalizedPropertiesForm.cs" />
+    <Compile Include="ViewComponents\SectionsPagesTreeMenu.cs" />
+    <Compile Include="ViewComponents\LanguageMenu.cs" />
+    <Compile Include="ViewComponents\TopMenu.cs" />
+    <Compile Include="Models\Culture.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Schema\BusinessClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DiskOutputCache\DiskOutputCache.csproj">
+      <Project>{065F083F-58EC-452A-B8F0-4458B488115D}</Project>
+      <Name>DiskOutputCache</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

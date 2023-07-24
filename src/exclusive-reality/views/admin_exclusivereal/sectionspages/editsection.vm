@@ -1,0 +1,59 @@
+﻿#capturefor(title) Správa sekce #end
+
+#capturefor(crumbmenu) <a href="/admin_exclusivereal/">úvodní strana</a> | <a href="/admin_exclusivereal/sectionspages/index.aspx">Sekce / stránky</a> | <strong>Editace sekce "$Section.Title"</strong> #end
+#capturefor(sectionspages_active)class="active"#end
+#capturefor(sectionspages_submenu)
+<ul>
+  <li><a href="/admin_exclusivereal/sectionspages/newpage.aspx" href="Vytvořit novou stránku">Vytvořit novou stránku</a></li>
+  <li><a href="/admin_exclusivereal/sectionspages/newsection.aspx" href="Vytvořit novou sekci">Vytvořit novou sekci</a></li>
+</ul>
+#end
+#capturefor(custommenu)
+<div id="pagestree">
+#component(SectionsPagesTreeMenu)
+</div>
+#end
+
+
+
+<div id="right">
+<h2>Editace sekce "$Section.Title"</h2>
+$NexusARFormHelper.FormTag("%{action='UpdateSection'}")
+
+$NexusARFormHelper.HiddenField("Section.Id")
+
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "Title", $Section)</div>
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "Name", $Section)</div>
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "OrderPriority", $Section)</div>
+<div>Datum vytvoření: $Section.Created</div>
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "Culture", $Section)#if(!$Section.Culture) (Kultura nadřazené/ých sekce/í: $Section.GetEnsuredCulture(false))#end</div>
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "Published", $Section)</div>
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "ParentSection", $Section)</div>
+<br />
+<div>
+Pod-sekce:<br />
+#foreach($section in $Section.Sections)
+<div><a href="/admin_exclusivereal/sectionspages/editsection.aspx?id=$section.Id" title="Editovat">$section</a></div>
+#end
+</div>
+<br />
+<div>
+Stránky:<br />
+#foreach($page in $Section.Pages)
+<div><a href="/admin_exclusivereal/sectionspages/editpage.aspx?id=$page.Id" title="Editovat">$page</a></div>
+#end
+</div>
+<br />
+
+$NexusARFormHelper.Submit("Uložit", "%{class='wymupdate'}")
+
+$NexusARFormHelper.EndFormTag()
+
+
+$NexusARFormHelper.FormTag("%{action='DeleteSection'}")
+
+$NexusARFormHelper.HiddenField("Section.Id")
+$NexusARFormHelper.Submit("Vymazat")
+
+$NexusARFormHelper.EndFormTag()
+</div>

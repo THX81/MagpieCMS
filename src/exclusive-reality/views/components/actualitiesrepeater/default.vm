@@ -1,0 +1,24 @@
+﻿#if ($SelectedActuality)
+
+    #capturefor(title) $SelectedActuality.GetLocalizedObject().Heading #end
+
+    <h2>$SelectedActuality.Created.ToShortDateString() | $SelectedActuality.GetLocalizedObject().Heading</h2>
+
+    <p>$SelectedActuality.GetLocalizedObject().Perex.Replace("\n","<br />")</p>
+
+    $SelectedActuality.GetLocalizedObject().Content
+      
+#else
+
+    #capturefor(title) $CurrentPage.Title #end
+    
+    <h2>$CurrentPage.Title</h2>
+
+    #foreach($actuality in $Actualities)
+    <div>
+        <p><strong><a href="$actuality.GetUrl()">$actuality.Created.ToShortDateString() | $actuality.GetLocalizedObject().Heading</a></strong><br />
+        $actuality.GetLocalizedObject().Perex.Replace("\n","<br />")</p>
+    </div>
+    #end
+    
+#end

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="copyright" content="Company, s. r. o." />
+    <meta name="author" content="ASP.NET: Richard Straka [richard.straka@gmail.com]" />
+    <meta name="author" content="Grafika, XHTML, CSS: Miroslav Malát [mir2001@post.cz]" />
+    <meta name="description" content="Company - Prague real estates." />
+    <meta name="keywords" content="" />
+    <link href="$siteroot/css/screen.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <link href="$siteroot/css/screen-en.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <link href="$siteroot/css/print.css" rel="stylesheet" type="text/css" media="print" />
+    <script type="text/javascript" src="$siteroot/js/all.js"></script>
+    <title>$!title - Company - Real estate and investment company Company</title>
+	<link rel="shortcut icon" href="/favicon.ico" /> 
+    $!head
+  </head>
+  <body>
+    <div id="balicek2">
+    <div id="balicek1">
+    <div id="balicek">
+      <p class="spaceman">
+        <a href="#menu">skip to menu &darr;</a> | <a href="#text-box">skip to content &darr;</a>
+      </p>
+
+<!-- hlavicka -->
+      <div id="hlavicka">
+        <h1><a href="/en/index.aspx" title="[home page]">Copmpany | Real estate and investment company Company<span></span></a></h1>
+        <ul>
+            <li><a href="/en/contact/place-offer.aspx">Place an offer</a></li>
+            <li><a href="/en/contact/place-request.aspx">Place a request</a></li>
+        </ul>
+      </div>
+ 
+      <p id="lang">
+        <a href="/en/sitemap.aspx">site map</a> | #component(LanguageMenu)
+      </p>
+<!-- // hlavicka -->
+
+      <hr class="nod" />
+
+<!-- Hlavní obsah -->
+      <div id="text-box">
+			$childContent
+      </div><!-- // hlavní obsah -->
+
+      <hr class="nod" />
+      <!-- Menu -->
+      <div id="menu">
+#component(TopMenu)
+      </div>
+        
+        <p class="spaceman">
+          <a href="#text-box">skip to content &uarr;</a>
+        </p>
+      <!-- // menu -->
+
+      <hr class="nod" />
+
+      <div id="paticka">          
+          <p class="flr">
+            <a href="#">print</a> | <a href="#balicek">top</a>
+          </p>
+          <p class="fll">
+            &copy; <a href="http://www.company.cz/en">COMPANY, s. r. o.</a>
+ 
+          </p>
+      </div>
+
+    </div><!-- // balicek -->
+    </div><!-- // balicek1 top shd -->
+    </div><!-- // balicek2 btn shd -->
+    
+    $!scripts
+  </body>
+</html>

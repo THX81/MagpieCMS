@@ -1,0 +1,295 @@
+/** 
+	@author: Miroslav Malat
+	@site: www.company.cz
+-------------------------------- */
+html, body {	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;	line-height: 1.5;	color: #333;	margin: 0;	padding: 0;	text-align: center;}
+body { background: #FDFCFA url(../gfx/bg-main.gif) repeat-x top;}
+
+/* basic elements
+------------------------------------------------ */
+address, li, dt, dd, p, th, td, h3, h4, h5, h6, caption, form.search {	font-size: 0.6875em;}
+
+h1, h2, h3 {	font-size: 0.9375em;	margin: 0 0 1em 0;}
+h1, h2 {	font-size: 0.8125em;	color: #F5731A;}
+h3 {	margin: 0.5em 0 5px 0;	font-size: 0.75em;	color: #493419;}
+h4 {	margin-bottom: 0;}
+
+h3 a {color: #493419;}
+
+a {	color: #F5731A;}
+a:hover, a:focus {	text-decoration: none;}
+address {	font-style: normal;	margin-bottom: 0.9em;}
+
+p {	margin: 0 0 7px 0;}
+b, strong {	}
+
+dt {	margin-left: 15px;	margin-top: 10px;	font-weight: bold;}
+dd {	margin-left: 25px;}
+ul {	margin: 0 0 10px 0;	padding-left: 10px;}
+ol {	margin-left: 7px;	padding-left: 10px;}
+li {	margin: 7px;	margin: 0 0 0 3px;}
+li li {	font-size: 100%;}
+ul li {	list-style: square;}
+ol li {	list-style-type: decimal;}
+
+hr {	border: 1px solid #fff;	border-bottom: 1px solid #B2B2B2;	margin: 5px 0;
+	_margin: 0 0;
+}
+img {	border: none;	font-size: 11px;	color: #333;	background: #fff url(../gfx/loading.gif) no-repeat center; display: block; }
+textarea {	border: 1px solid #c8c8c8;	padding: 2px;}
+label {	display: block; vertical-align: middle; padding: 1px 0;}
+fieldset {	margin: 10px 15px; padding: 0;	border: none;	vertical-align: middle;}
+legend { color: #493419; font-weight: bold; padding: 0 0 3px 0; margin: 0;}
+
+*body legend {	margin-left: -5px;	}
+
+input[type=radio], input.radio {	vertical-align: text-bottom;}
+input[type=checkbox], input.check { vertical-align: middle;}
+input.send { background: #000000 url(../gfx/bg-button.gif) repeat-x center; color: #fff; border: none; font-weight: bold; padding: 3px 8px;
+	cursor: pointer;
+}
+input.send:hover {	opacity: 0.8;}
+
+input:focus {	background-color: #FFA500; color: #000;}
+*body input.send {	margin-left: 0;} /* hack for IEs */
+
+table {	width: 100%;	border-left: 1px solid #D7D7D7;	border-top: 1px solid #D7D7D7;	margin-bottom: 15px;}
+td, th {	padding: 5px;	line-height: 1.5;	vertical-align: middle;	border-right: 1px solid #D7D7D7;	border-bottom: 1px solid #D7D7D7;}
+th {	text-align: left;	color: #533B1A;	font-weight: bold;}
+/*th a {	color: #493419;}*/
+caption {	text-align: left;	color: #3857BD;	margin-left: 2px;}
+
+/* obecne
+------------------------------------------ */
+.left {	text-align: left !important;}
+.right {	text-align: right !important;}
+.center {	text-align: center !important;}
+.fll {	float: left;}
+.flr {	float: right;}
+img.fll {	float: left;	margin-right: 10px;}
+img.flr {	float: right;	margin-left: 20px;}
+
+.cleaner {	clear: both;}
+div.cleaner {	height: 1px;	font-size: 1px;	line-height: 1px;}
+
+.hid {	visibility: hidden;}
+.nod {	display: none;}
+.spaceman {	position: absolute;	top: -3000px;	left: 0;}
+.half {	float: left;	width: 45%;	margin-left: 10px;}
+.spacer {	border: 1px solid #fff;	border-bottom: 1px solid #ddd;	margin: 10px 0 10px 0;	display: block;}
+
+.vtop {	vertical-align: top;}
+
+/*sirky*/
+.w570 {	width: 570px;}
+.w550 {	width: 550px;}
+.w350 {	width: 350px;}
+.w320 {	width: 320px;}
+.w240 {	width: 240px;}
+
+/* balicek
+-----------------------------------------------*/
+#balicek2 {	background: url(../gfx/shd-btn.gif) no-repeat center bottom;	padding-bottom: 10px;}
+#balicek1 {	background: url(../gfx/shd-top.gif) no-repeat center 40px;	padding-top: 49px;}
+#balicek {	position: relative;	width: 840px;	margin: 0 auto;	text-align: left;	background-color: #fff;}
+
+/* hlavicka
+-----------------------------------------------*/
+#hlavicka {	margin: 0 10px;	width: 820px;	height: 145px;	background: url(../gfx/bg-hlavicka.jpg) no-repeat 350px 12px;}
+#hlavicka h1 {	width: 320px;	height: 125px;	line-height: 70px;	text-align: cente;	font-size: 12px;	overflow: hidden;	background-color: #fff;	position: absolute;	top: 0;	left: 0;	margin: 10px;	padding: 0;}
+#hlavicka h1 span {	position: absolute;	left: 0;	top: 0;display: block;	width: 320px;	height: 125px;	background: url(../gfx/bg-hlavicka.gif) no-repeat -20px 0;	cursor: pointer;
+	_cursor: hand;
+}
+#hlavicka h1 a {	color: #000;}
+
+#hlavicka ul {	display: block;	width: 118px;	margin: 0;	padding: 0;	list-style: none;	position: absolute;	right: 15px;top: 18px;}
+#hlavicka ul li {	list-style: none;	margin: 0 0 2px 0;	padding: 0;	height: 26px;	line-height: 26px;	text-align: center;	background: #EC6407 url(../gfx/btn-offer.gif) no-repeat 0 0;}
+#hlavicka ul a {	color: #fff;	text-decoration: none; display: block; 	background: #25190A url(../gfx/btn-offer.gif) no-repeat -118px 0;}
+#hlavicka ul a:hover, #hlavicka ul a:focus {	background: url(../gfx/btn-offer.gif) no-repeat 0 0;}
+
+p#lang {	position: absolute;	top: -30px;	left: 0;	display: block;	width: 830px;	text-align: right;	color: #6F6F6F; margin: 0; padding: 0;}
+p#lang a {color: #473319;}
+
+/* text-box
+-----------------------------------------------*/
+#text-box {	width: 820px;	margin: 0 10px;	padding: 55px 0 30px 0;}
+#text-box a.ico {	background: url(../gfx/bull-orange.gif) no-repeat left;	padding-left: 7px;}
+
+/* hp recommendation */
+#hp-recommend {	background-color: #F7F7F7;	border: 1px solid #D7D7D7;	width: 178px;	height: 15em;	float: left;	margin: 0 20px 10px 0;}
+#hp-recommend:hover, #hp-recommend:hover img, #hp-recommend a:hover img  {	border-color: #bbb; }
+
+#hp-recommend img {margin: 9px 8px 0 8px;	border: 1px solid #D7D7D7;	}
+#hp-recommend h2, #hp-recommend p {	margin-left: 10px;	margin-right: 10px;	}
+#hp-recommend h2  {margin: 0 10px;	font-size: 0.75em;}
+#hp-recommend h2 a {	text-decoration: none;}
+#hp-recommend h2 a:hover {	text-decoration: underline;}
+
+.helper {width: 800px;	overflow: hidden;}
+
+/*formular - vyhledavani*/
+#more {
+	position: relative;
+}
+#text-box form.search {	background-color: #F7F2E8;	border: 1px solid #D1BF87; padding: 10px 0;  position: relative;	width: 578px;}
+*body #text-box form.search {	/*position: absolute;*/ margin-top: -1px;} 
+
+a:hover img#big {	border: 2px solid #ffa500;}
+img#big {	float: right;	border: 2px solid #ddd;	margin-left: 20px;}
+
+#text-box form.search #pch, #text-box form.search #pp {	width: 240px; float: left;
+	_margin-left: 10px;
+}
+
+#text-box form.search #catno10 { 	width: 70px; }
+
+#text-box form.search #desc{	width: 550px; clear: both;}
+#text-box form.search textarea {	width: 540px;	height: 120px;}
+
+#text-box form.search #ps input, #text-box form.search #pl input { vertical-align: middle;}
+
+#text-box form.search #pch select {width: 100px; margin-right: 5px;}
+#text-box form.search #pp input { width: 80px;}
+
+#text-box form.search #ps {	width: 270px; float: right; width: 260px;}
+#text-box form.search #ps label {	width: 130px;	float: left;}
+
+#text-box form.search #pl {	width: 465px; clear: both;}
+#text-box form.search #pl label {	width: 110px;	float: left;}
+
+#text-box form.search .send {	position: absolute;	bottom: 10px;	right: 10px;	width: 100px;	padding: 3px 0;}
+
+#text-box p.filter {	background-color: #F7F2E8;	border: 1px solid #D1BF87;	padding: 10px 10px;}
+#text-box p.filter a {	color: #333;}
+
+/*vypis nemovitosti*/
+#text-box table.list {	border: none;}
+#text-box table.list th {	border-right: none;	font-weight: normal;}
+#text-box table.list td {	border: none;	border-bottom: 1px solid #D7D7D7;	padding-top: 15px;}
+#text-box table.list td.vtop {	width: 120px;}
+
+#text-box table.list td em {font-style: normal;	font-weight: bold;	color: #4c4c4c;}
+#text-box table.list td strong, #text-box table.list td strong a {	display: block;}
+
+/*foto*/
+#text-box #foto {padding: 0 10px 0 0}
+#text-box #foto img { margin: 0 15px 15px 0;	width: 120px;	height: 90px;	float: left;}
+
+#text-box #foto a img {	border: 2px solid #ddd;}
+#text-box #foto a:hover img {	border: 2px solid #ffa500;}
+
+/*pravy sloupec*/
+#text-box #right {width: 580px;	float: right;	overflow: hidden;}
+
+#text-box .contact {	width: 280px;	float: left;}
+
+#text-box .senders {	width: 280px;}
+#text-box .senders form {	margin: 0 0 20px 0;	background-color: #F7f2e8;	border: 1px solid #D1BF87; padding: 10px; height: 17em	}
+#text-box .senders th {	width: 85px;}
+#text-box .senders table, #text-box .senders th, #text-box .senders td {
+	border-color: #F7f2e8;
+}
+
+
+/*levy sloupec*/
+#text-box #left {	width: 220px;	float: left;	background-color: #F7F7F7;	min-height: 450px;
+	_height: 450px;
+}
+#text-box #left h2 {	font-size: 0.75em;	color: #F7F7F7;	background-color: #F5731A;	border-top: 1px solid #F5731A;	border-bottom: 1px solid #D7D7D7;	line-height: 2.0;	margin: 0 0 10px 0;	padding-left: 10px;}
+
+#text-box #left dl{	margin: 0 10px 20px 10px;}
+#text-box #left dt, #text-box #left dd  {	margin: 0;}
+#text-box #left dd.right {	margin-bottom: 15px;}
+#text-box #left dd.right a {background: url(../gfx/bull-orange.gif) no-repeat left;	padding-left: 7px;}
+#text-box #left small {	font-weight: normal;	font-size: 100%;	color: #F5731A;}
+
+#text-box address {	margin: 10px;}
+#text-box address br {	margin: 0;	padding: 0;	line-height: 0.6em;}
+
+/* menu leva */
+#text-box #left ul.menu, #text-box #left ul.menu li {	list-style: none;	margin: 0;	padding: 0;}
+#text-box #left ul.menu li strong {	color: #F7F7F7;		background-color: #F5731A;		border-top: 1px solid #F5731A;	border-bottom: 1px solid #D7D7D7;		line-height: 2.0;	margin: 0 0 10px 0;	padding-left: 10px;	display: block;}
+#text-box #left ul.menu li strong a {	color: #F7F7F7;}
+
+
+/* levy sloupec - nabidka */
+#text-box #left .offer {	border-bottom: 1px solid #E7E7E7;	margin: 4px 0 10px 0; padding-bottom: 10px;}
+#text-box #left .offer dt, #text-box #left .offer dd {	margin: 0 10px;}
+#text-box #left dt.head a { font-weight: normal;	color: #1E1E1E;	text-decoration: none;}
+#text-box #left dt.head a:hover {text-decoration: underline;}
+
+/* menu
+-----------------------------------------------*/
+#menu {	width: 820px;	height: 34px;	position: absolute;	top: 145px;	left: 10px;	background-color: #4C3619;	text-align: left;}
+#menu ul {	margin: 0;	padding: 0;	width: 820px;	height: 34px;	list-style: none;	background: url(../gfx/bg-mnu.gif) repeat-x top;	border-bottom: 4px solid #D1BF87;}
+#menu li {	margin: 0 0 -4px 0;	padding: 0;	line-height: 34px;	display: block;	background: #413018 url(../gfx/bg-mnu.gif) repeat-x top; border-bottom: 4px solid #D1BF87;	border-right: 2px solid #fff;	float: left;
+	position: relative;
+	_overflow: hidden;
+}
+#menu li a {	color: #fff;	text-decoration: none;	font-weight: bold;padding: 0 14px;	display: block;	line-height: 34px;}
+#menu li a:hover, #menu li a:focus {	color: #E7DCBE;}
+#menu li.active, #menu li a:focus {	background: #6F4834;}
+
+/* menu - level 2*/
+
+/* zobrazit submenu */
+#menu li div {	position: absolute;	left: 0;	top: 34px;	background: #D1BF87;	background: #342717;	border: 1px solid #342717;	padding: 10px 0;	z-index: 3000;}
+
+#menu li div ul {	width: 152px;	background: none;	margin: 0 14px;	border: none;	height: auto;}
+#menu li div ul ul {	margin: 0 10px 10px 10px;}
+#menu li div ul li {	border: none;	background: none;	display: block;	width: 190px;	line-height: 1.0;	border: none;	float: none;}
+#menu li div strong {	color: #fff;}
+#menu li div a {	color: #fff;	line-height: 2.0;	padding: 0;	font-weight: normal;	text-decoration: underline;	display: inline;}
+
+#menu li div a:hover {	text-decoration: none;}
+#menu li ul li {	background: #4c3619;}
+#menu li ul ul {	margin-bottom: 10px;}
+
+/* submenu show/off */
+#menu li.menuon div {display: block;}
+#menu li div, #menu li.menuoff div { display: none;}
+
+
+/*vyhledavani*/
+#menu li.last {	position: absolute;	top: 0;	right: 0;	border-right: none;}
+#menu li.last a {	color: #e7dcbe;	background: url(../gfx/ico-lens.gif) no-repeat left;	padding-left: 10px;	}
+#menu li.last a:hover {	color: #fff;}
+
+/* paticka
+-----------------------------------------------*/
+#paticka {	width: 100%;	height: 27px;	clear: both;	background-color: #F8F8F8;	border-top: 1px solid #D7D7D7;}
+#paticka p {	line-height: 27px;	margin: 0;	padding: 0;}
+#paticka p.flr {	width: 300px;	margin-right: 10px;	text-align: right;}
+#paticka p.flr a {	color: #1E1E1E; text-decoration: none;}
+
+#paticka p.fll {	width: 500px;	margin-left: 10px; color: #858585;}
+#paticka p.fll a {	color: #858585;	font-weight: bold;	text-decoration: none;}
+
+#paticka p.fll a:hover, #paticka p.flr a:hover {text-decoration: underline;}
+
+/* viewer
+------------------------------------------- */
+#vBox{color:#373737; font:0.6875em/1.5 Arial,Helvetica,sans-serif,"Calibri"; width:auto;padding:15px 15px 0 15px; position:absolute;top:0;z-index:10; background: #000 /*url('../gfx/viewer/tico_close.png') 100% 100% no-repeat*/; border: solid 1px #edf8ff; visibility:hidden;}
+
+#vBox h3 {font-size: 1.2em; /*font-weight: bold;*/ margin-top:0;margin-bottom: 0.2em; color: #fff; text-align: left;}
+#vBox a {text-decoration: none;cursor:pointer;}
+#vBox a:hover {text-decoration: underline;}
+#vBox p {color:#8d8c8c; font-size:1.1em;}
+#vBox big {font-size:1.1em; font-weight: bold;}
+
+#vBox p.close{ font-size: 1.0em;text-align:right; text-transform: uppercase; padding:0;/*padding-right: 33px;*/ margin-top: 15px;}
+#vBox p.close a{}
+#vBox p.close a:hover{}
+#vBox p.close u{font-weight: bold;}
+
+#vImg{position: relative;}
+#vImg img {margin-bottom:0px;}
+#vImg a {width: 49%; position: absolute; top: 0; z-index: 1; display: block;}
+#vImg a.prev {left: 0; background: url('../gfx/viewer/tico_prev.png') 0 -60px no-repeat;}
+#vImg a.prev:hover {background-position: 0 1px;}
+#vImg a.next {right: 0;background: url('../gfx/viewer/tico_next.png') 100% -60px no-repeat;}
+#vImg a.next:hover {background-position: 100% 1px;}
+#vImg span, #vImg br {display:none;}
+
+#vLoader{padding: 20px; position:absolute; top:0; left:0; z-index:10;background-color:#fff;visibility:hidden;}
+#vOverlay{height: 100%; position: absolute; top:0; z-index:1; overflow: hidden; cursor: pointer;}

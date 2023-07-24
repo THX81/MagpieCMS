@@ -1,0 +1,75 @@
+﻿#capturefor(title) $ClassLocalization.ItemsText #end
+
+#capturefor(crumbmenu) <a href="/admin_exclusivereal/">úvodní strana</a> | <a href="/admin_exclusivereal/estates/index.aspx">Správa Inzerátů</a> | <strong>$ClassLocalization.ItemsText</strong> #end
+#capturefor(estates_active)class="active"#end
+
+
+#if ($filter_key=="Saled" && $filter_value=="0" && $filter_key1=="Rented" && $filter_value1=="0")
+    #capturefor(activeestates_active)class="active"#end
+#elseif ($filter_key=="Saled" && $filter_value=="1")
+    #capturefor(saledestates_active)class=="active"#end
+#elseif ($filter_key=="Rented" && $filter_value=="1")
+    #capturefor(rentedestates_active)class=="active"#end
+#elseif ($filter_key=="Publish" && $filter_value=="0")
+    #capturefor(unpublishedestates_active)class="active"#end
+#else
+    #capturefor(allestates_active)class="active"#end
+#end
+
+
+#capturefor(estates_submenu)
+        #component(EstatesAdminMenu)
+#end
+
+
+<div id="right">
+<h2>$ClassLocalization.ItemsText</h2>
+
+<p>
+<a href="new.aspx?CurrentStep=1">Přidat novou položku "$ClassLocalization.ItemText"</a>
+</p>
+<button onclick="window.location='?updateEstatesUrl=1';">Aktualizovat URL všech nemovitostí</button>
+<p>
+
+</p>
+
+#component(AdminListFilter)
+
+<table border="0" width="100%">
+<tr>
+	<th>$NexusARFormHelper.GetLocalizedPropertyName($Model.PrimaryKey.Property)</th>
+	<th>Kód</th>
+	<th>Název</th>
+	<th>Vytvořeno</th>
+	<th>Tip</th>
+	<th>Projekt</th>
+	<th width="50px">&nbsp;</th>
+</tr>
+#foreach($item in $items)
+<tr>
+	<td>$Model.PrimaryKey.Property.GetValue($item, null)</td>
+	<td align="center">$item.EstateExtendedInfo.OrderNumber</td>
+	<td>
+    #if($item.LocalizedObjects.Count > 0)
+        #foreach($cultureItem in $item.LocalizedObjects)
+            #if($cultureItem.Name != "")
+                $cultureItem<br />
+            #end
+        #end
+    #else
+    $item
+    #end
+	</td>
+	<td align="center">$item.Created</td>
+	<td align="center">$item.HotTip</td>
+	<td align="center" style="white-space:nowrap;">
+	    #if($item.DeveloperProject)
+	        <a href="/admin_exclusivereal/estates/developerprojects/edit.aspx?id=$item.DeveloperProject.Id&CurrentStep=1"><strong>$item.DeveloperProject.Id</strong>-$item.DeveloperProject</a>
+	    #end
+	</td>
+	<td align="center"><a href="edit.aspx?id=$item.Id&CurrentStep=1">Editovat</a><br /><a href="edit.aspx?id=$item.Id&CurrentStep=4">Přílohy</a><br /><a href="confirmdelete.aspx?id=$item.Id">Vymazat</a></td>
+</tr>
+
+#end
+</table>
+</div>

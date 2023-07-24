@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+=======================================================================
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+ 
+  THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
+  KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+  PARTICULAR PURPOSE.
+=======================================================================
+
+Config.scdl file defines config for disk output cache.
+Config.cs is auto-generated from this file using scdl.exe
+-->
+<diskOutputCache>
+    <diskOutputCacheSettings 
+        location="" 
+        fileRemovalDelay="00:00:15" 
+        fileValidationDelay="00:00:05"
+        fileScavangingDelay="00:10:00" 
+        varyByLimitPerUrl="256"
+        imagesCacheDuration="00:10:00">
+        <cachedUrls>
+            <add 
+                path="" 
+                duration="00:00:00" 
+                verbs="GET" 
+                varyBy=""
+                emptyQueryStringOnly="false"
+                emptyPathInfoOnly="false" 
+                serveFromMemory="false"
+                />
+        </cachedUrls>
+    </diskOutputCacheSettings>
+</diskOutputCache>

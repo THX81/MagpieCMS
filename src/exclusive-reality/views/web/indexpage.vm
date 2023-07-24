@@ -1,0 +1,47 @@
+﻿#capturefor(title) $CurrentSection.Title #end
+
+#capturefor(scripts)
+<!-- Here you can include some inline javascript that will be added to the <head> element -->
+<!--<script type="text/javascript">/*<![CDATA[*/
+sayHello();
+function sayHello() 
+{
+	return alert("Hello");
+}
+/* ]]> */</script>-->
+#end
+
+#capturefor(head)
+<!-- Here you can include some content to appear on the layout, inside head. For example, stylesheets -->
+#end
+
+
+<div id="right">
+<h2>$CurrentSection.Title</h2>
+#foreach($node in $CurrentSection.GetSectionNodes(true))
+#beforeall
+              <ul>
+#each
+                #if ($node.GetUrl(true) != $CurrentPage.GetUrl(true))
+                <li><a href="$node.GetUrl(true)">$node.Title</a></li>
+                #end
+#afterall
+              </ul>
+#end
+
+
+  
+</div><!-- //right -->
+
+
+<div id="left">
+#component(LeftActualities)
+#component(Address)
+</div> <!-- //left -->
+
+<div class="cleaner" />
+
+
+
+
+

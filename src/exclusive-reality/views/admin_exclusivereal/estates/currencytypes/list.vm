@@ -1,0 +1,45 @@
+﻿#capturefor(title) $ClassLocalization.ItemsText #end
+
+#capturefor(crumbmenu) <a href="/admin_exclusivereal/">úvodní strana</a> | <a href="/admin_exclusivereal/estates/index.aspx">Správa Inzerátů</a> | <strong>$ClassLocalization.ItemsText</strong> #end
+#capturefor(estates_active)class="active"#end
+#capturefor(currencytypes_active)class="active"#end
+#capturefor(estates_submenu)
+        #component(EstatesAdminMenu)
+#end
+
+
+<div id="right">
+<h2>$ClassLocalization.ItemsText</h2>
+
+<p>
+<a href="new.aspx">Přidat novou položku "$ClassLocalization.ItemText"</a>
+</p>
+
+#component(AdminListFilter)
+
+<table border="0" width="100%">
+<tr>
+	<th>$NexusARFormHelper.GetLocalizedPropertyName($Model.PrimaryKey.Property)</th>
+	<th>Název</th>
+	<th>Datum vytvoření</th>
+	<th width="110px">&nbsp;</th>
+</tr>
+#foreach($item in $items)
+<tr>
+	<td>$Model.PrimaryKey.Property.GetValue($item, null)</td>
+	<td>
+    #if($item.LocalizedObjects.Count > 0)
+    #foreach($cultureItem in $item.LocalizedObjects)
+        $cultureItem<br />
+    #end
+    #else
+    $item
+    #end
+	</td>
+	<td align="center">$item.Created</td>
+	<td align="center"><a href="edit.aspx?id=$item.Id">Editovat</a> | <a href="confirmdelete.aspx?id=$item.Id">Vymazat</a></td>
+</tr>
+
+#end
+</table>
+</div>

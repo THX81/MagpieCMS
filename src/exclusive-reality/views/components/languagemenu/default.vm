@@ -1,0 +1,15 @@
+﻿#if($TwoLetterISOLanguageName == "cs")
+    #set($connPage = "/en/index.aspx")
+    #if($ConnectedPage)
+        #set($connPage = $ConnectedPage.GetUrl(true))
+    #end
+
+    česky | <a href="$connPage">english</a>
+#elseif($TwoLetterISOLanguageName == "en")
+    #set($connPage = "/index.aspx")
+    #if($ConnectedPage)
+        #set($connPage = $ConnectedPage.GetUrl(true))
+    #end
+
+    <a href="$connPage">česky</a> | english
+#end

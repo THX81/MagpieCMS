@@ -1,0 +1,42 @@
+﻿<form method="get">
+<table>
+    <tr>
+        <td>
+            Filtr (pro "Ano"/"Ne" používat 1/0, pro prázdnou hodnotu "null",<br /> pro ne-prazdnou hodnotu "not null")<br />
+            <select name="filter_key">
+            #foreach($prop in $Model.Properties)
+                <option value="$prop.Property.Name"#if($prop.Property.Name==$filter_key) selected="selected"#end>$prop.Property.Name</option>
+            #end           
+            #foreach($prop in $Model.BelongsTo)
+                <option value="$prop.Property.Name"#if($prop.Property.Name==$filter_key) selected="selected"#end>$prop.Property.Name</option>
+            #end
+            </select> obsahuje
+            <input type="text" name="filter_value"#if($filter_value) value="$filter_value"#end />
+
+            <select name="filter_key1">
+            #foreach($prop in $Model.Properties)
+                <option value="$prop.Property.Name"#if($prop.Property.Name==$filter_key1) selected="selected"#end>$prop.Property.Name</option>
+            #end           
+            #foreach($prop in $Model.BelongsTo)
+                <option value="$prop.Property.Name"#if($prop.Property.Name==$filter_key1) selected="selected"#end>$prop.Property.Name</option>
+            #end
+            </select> obsahuje
+            <input type="text" name="filter_value1"#if($filter_value1) value="$filter_value1"#end />
+
+            <button onchange="this.form.submit()">Filtruj</button>
+        </td>
+        <td>
+            Řazení<br />
+            <select name="sort_key" onchange="this.form.submit()">
+            #foreach($prop in $Model.Properties)
+                <option value="$prop.Property.Name"#if($prop.Property.Name==$sort_key) selected="selected"#end>$prop.Property.Name</option>
+            #end           
+            </select>
+            <select name="sort_dir" onchange="this.form.submit()">
+                <option value="desc"#if($sort_dir=="desc") selected="selected"#end>Sestupně</option>
+                <option value="asc"#if($sort_dir=="asc") selected="selected"#end>Vzestupně</option>
+            </select>
+        </td>
+    </tr>
+</table>
+</form>

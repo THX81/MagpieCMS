@@ -1,0 +1,196 @@
+/** 
+	@author: Miroslav Malat
+	@site: www.exclusive-real.cz
+-------------------------------- */
+html, body {	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;	line-height: 1.5;	color: #1E1E1E;	margin: 0;	padding: 0;	text-align: center;}
+body {font-size: 0.6875em; background: #FDFCFA url(../gfx/bg-main.gif) repeat-x top;}
+
+/* basic elements
+------------------------------------------------ */
+h1, h2, h3 {	font-size: 100%;	margin: 0 0 1em 0;}
+h1, h2 {	font-size: 130%;	color: #F5731A; clear: both;}
+h3 {	margin: 0.5em 0 0 0;	font-size: 125%;	color: #493419}
+h4 {	margin-bottom: 0;}
+
+a {	color: #F5731A;}
+a:hover {	text-decoration: none;}
+address {	font-style: normal;	margin-bottom: 0.9em;}
+
+p {	margin: 0 0 1em 0;}
+b, strong {	color: #1E1E1E;}
+
+dt {	margin-left: 15px;	margin-top: 10px;	font-weight: bold;}
+dd {	margin-left: 25px;}
+ul {	margin: 0 0 10px 0;	padding-left: 10px;}
+ol {	margin-left: 7px;	padding-left: 10px;}
+li {	margin: 7px;	list-style: square;	margin: 0 0 0 3px;}
+li li {	font-size: 100%;}
+ol li {	list-style-type: decimal;}
+
+hr {	border: 1px solid #fff;	border-bottom: 1px solid #B2B2B2;	margin: 5px 0;
+	_margin: 0 0;
+}
+img {	border: none;	font-size: 11px;	color: #333;	background: #FFF8DC url(../gfx/loading.gif) no-repeat center; display: block; }
+textarea {	border: 1px solid #c8c8c8;	padding: 2px;}
+label {	display: block; vertical-align: middle; padding: 1px 0;}
+fieldset {	margin: 10px 15px; padding: 0;	border: none;	vertical-align: middle;}
+legend { color: #493419; font-weight: bold; padding: 0 0 3px 0; margin: 0;}
+
+*body legend {	margin-left: -5px;	}
+
+input.radio {}
+input.check {vertical-align: middle;}
+input[type=checkbox] { vertical-align: middle;}
+input.send { background: #000000 url(../gfx/bg-button.gif) repeat-x center; color: #fff; border: none; font-weight: bold; padding: 3px 8px;
+	cursor: pointer;
+}
+input.send:hover {
+	opacity: 0.8;
+}
+input:focus {	background-color: #FFA500; color: #000;}
+*body input.send {	margin-left: 0;} /* hack for IEs */
+
+table {	width: 100%;	border-left: 1px solid #0368CC;	border-top: 1px solid #0368CC;	margin-bottom: 15px;}
+td, th {	padding: 5px;	line-height: 1.5;	vertical-align: middle;	border-right: 1px solid #0368CC;	border-bottom: 1px solid #0368CC;}
+th {	text-align: left;	color: #FDD01E;	font-weight: bold;}
+th a {	color: #0368cc;}
+caption {	text-align: left;	color: #3857BD;	margin-left: 2px;}
+
+/* obecne
+------------------------------------------ */
+.left {	text-align: left !important;}
+.right {	text-align: right !important;}
+.center {	text-align: center !important;}
+.fll {	float: left;}
+.flr {	float: right;}
+img.fll {	float: left;	margin-right: 10px;}
+img.flr {	float: right;	margin-left: 10px;}
+
+.cleaner {	clear: both;}
+div.cleaner {	height: 1px;	font-size: 1px;	line-height: 1px;}
+
+.hid {	visibility: hidden;}
+.nod {	display: none;}
+.spaceman {	position: absolute;	top: -3000px;	left: 0;}
+.half {	float: left;	width: 45%;	margin-left: 10px;}
+.spacer {	border: 1px solid #BA0729;	border-bottom: 1px solid #BA0729;	margin: 10px 0 10px 0;	display: block;}
+
+/*sirky*/
+.w550 {	width: 550px;}
+.w350 {	width: 350px;}
+
+/* balicek
+-----------------------------------------------*/
+#balicek2 {	background: url(../gfx/shd-btn.gif) no-repeat center bottom;	padding-bottom: 10px;}
+#balicek1 {	background: url(../gfx/shd-top.gif) no-repeat center 40px;	padding-top: 49px;}
+#balicek {	position: relative;	width: 840px;	margin: 0 auto;	text-align: left;	background-color: #fff;}
+
+/* hlavicka
+-----------------------------------------------*/
+#hlavicka {	margin: 0 10px;	width: 820px;	height: 145px;	background: url(../gfx/bg-hlavicka.jpg) no-repeat center;}
+#hlavicka h1 {	width: 230px;	height: 125px;	line-height: 70px;	text-align: center;	font-size: 12px;	overflow: hidden;	background-color: #fff;	position: absolute;	top: 0;	left: 0;	margin: 10px;	padding: 0;}
+#hlavicka h1 span {	position: absolute;	left: 0;	top: 0;display: block;	width: 230px;	height: 125px;	background: url(../gfx/bg-hlavicka.jpg) no-repeat 0;	cursor: pointer;
+	_cursor: hand;
+}
+#hlavicka h1 a {	color: #000;}
+
+p#lang {	position: absolute;	top: -30px;	left: 0;	display: block;	width: 830px;	text-align: right;	color: #6F6F6F; margin: 0; padding: 0;}
+p#lang a {color: #473319;}
+
+/* text-box
+-----------------------------------------------*/
+#text-box {	width: 820px;	margin: 0 10px;	padding: 55px 0 30px 0;}
+
+#text-box a.ico {	background: url(../gfx/bull-orange.gif) no-repeat left;	padding-left: 7px;}
+
+#text-box address.hp {	width: 188px;	float: right;	margin-left: 20px;	padding: 15px 20px; 	background: #FCFAF6 url(../gfx/bg-address.gif) repeat-x top;	border: 1px solid #D1BF87;
+	_width: 218px;
+}
+#text-box address.hp br {	line-height: 10px;	height: 10px;}
+
+/*formular - vyhledavani*/
+#text-box form.search {	background-color: #F7F2E8;	border: 1px solid #D1BF87; padding: 10px 0;  position: relative;
+	width: 578px;
+}
+*body #text-box form.search {	position: absolute;} 
+
+#text-box form.search #pch, #text-box form.search #pp {	width: 240px; float: left;
+	_margin-left: 10px;
+}
+
+#text-box form.search #ps input, #text-box form.search #pl input { vertical-align: middle;}
+
+#text-box form.search #pch select {width: 100px; margin-right: 5px;}
+#text-box form.search #pp input {
+	width: 80px;
+}
+
+#text-box form.search #ps {	width: 270px; float: right; width: 260px;}
+#text-box form.search #ps label {	width: 130px;	float: left;}
+
+#text-box form.search #pl {	width: 465px; clear: both;}
+#text-box form.search #pl label {	width: 110px;	float: left;}
+
+#text-box form.search .send {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	width: 100px;
+	padding: 3px 0;
+}
+
+
+/*pravy sloupec*/
+#text-box #right {width: 580px;	float: right;	min-height: 200px;}
+
+
+/*levy sloupec*/
+#text-box #left {	width: 220px;	float: left;	background-color: #F7F7F7;	min-height: 450px;
+	_height: 450px;
+}
+
+#text-box #left h2 {	font-size: 100%;	color: #F7F7F7;	background-color: #F5731A;	border-top: 1px solid #F5731A;	border-bottom: 1px solid #D7D7D7;	line-height: 2.0;	margin: 0 0 10px 0;	padding-left: 10px;}
+
+#text-box #left dl{	margin: 0 10px 20px 10px;}
+#text-box #left dt, #text-box #left dd  {	margin: 0;}
+#text-box #left dd.right {	margin-bottom: 15px;}
+#text-box #left dd.right a {background: url(../gfx/bull-orange.gif) no-repeat left;	padding-left: 7px;}
+#text-box #left small {	font-weight: normal;	font-size: 100%;	color: #F5731A;}
+
+/* levy sloupec - nabidka */
+#text-box #left .offer {	border-bottom: 1px solid #E7E7E7;	margin: 4px 0 10px 0; padding-bottom: 10px;}
+#text-box #left .offer dt, #text-box #left .offer dd {	margin: 0 10px;}
+#text-box #left dt.head a { font-weight: normal;	color: #1E1E1E;	text-decoration: none;}
+#text-box #left dt.head a:hover {text-decoration: underline;}
+
+
+
+
+/* menu
+-----------------------------------------------*/
+#menu {	width: 820px;	height: 34px;	position: absolute;	top: 145px;	left: 10px;	background-color: #4C3619;	text-align: left;}
+#menu ul {	margin: 0;	padding: 0;	width: 820px;	height: 34px;	list-style: none;	background: url(../gfx/bg-mnu.gif) repeat-x top;	border-bottom: 4px solid #D1BF87;}
+#menu li {	margin: 0 0 -4px 0;	padding: 0;	line-height: 34px;	display: block;	background: #413018 url(../gfx/bg-mnu.gif) repeat-x top; border-bottom: 4px solid #D1BF87;	border-right: 2px solid #fff;	float: left;
+	position: relative;
+	_overflow: hidden;
+}
+#menu li a {	color: #fff;	text-decoration: none;	font-weight: bold;padding: 0 14px;	display: block;	line-height: 34px;}
+#menu li a:hover {	color: #E7DCBE;}
+#menu li.active {	background: #6F4834;}
+
+/*vyhledavani*/
+#menu li.last {	position: absolute;	top: 0;	right: 0;	border-right: none;}
+#menu li.last a {	color: #e7dcbe;	background: url(../gfx/ico-lens.gif) no-repeat left;	padding-left: 10px;	}
+#menu li.last a:hover {	color: #fff;}
+
+/* paticka
+-----------------------------------------------*/
+#paticka {	width: 100%;	height: 27px;	clear: both;	background-color: #F8F8F8;	border-top: 1px solid #D7D7D7;}
+#paticka p {	line-height: 27px;	margin: 0;	padding: 0;}
+#paticka p.flr {	width: 300px;	margin-right: 10px;	text-align: right;}
+#paticka p.flr a {	color: #1E1E1E; text-decoration: none;}
+
+#paticka p.fll {	width: 500px;	margin-left: 10px; color: #858585;}
+#paticka p.fll a {	color: #858585;	font-weight: bold;	text-decoration: none;}
+
+#paticka p.fll a:hover, #paticka p.flr a:hover {text-decoration: underline;}

@@ -1,0 +1,23 @@
+﻿              <ul>
+                <li class="active"><a href="#">Správa nemovitostí</a>
+                  <ul>
+                    <li $!activeestates_active><a href="/admin_exclusivereal/estates/allestates/list.aspx?filter_key=Saled&filter_value=0&filter_key1=Rented&filter_value1=0&sort_key=Created&sort_dir=desc">Aktivní nemovitosti</a></li>
+                    <li $!saledestates_active><a href="/admin_exclusivereal/estates/allestates/list.aspx?filter_key=Saled&filter_value=1&sort_key=Created&sort_dir=desc">Prodané nemovitosti</a></li>
+                    <li $!rentedestates_active><a href="/admin_exclusivereal/estates/allestates/list.aspx?filter_key=Rented&filter_value=1&sort_key=Created&sort_dir=desc">Pronajaté nemovitosti</a></li>
+                    <li $!unpublishedestates_active><a href="/admin_exclusivereal/estates/allestates/list.aspx?filter_key=Publish&filter_value=0&sort_key=Created&sort_dir=desc">Nepublikované nemovitosti</a></li>
+                    <li $!allestates_active><a href="/admin_exclusivereal/estates/allestates/list.aspx?sort_key=Created&sort_dir=desc">Všechny nemovitosti</a></li>
+                  </ul>
+                </li>
+                <li class="active"><a href="#">Správa developerské projekty</a>
+                  <ul>
+                    <li $!developerprojects_active><a href="/admin_exclusivereal/estates/developerprojects/index.aspx">Developerské projekty</a></li>
+                  </ul>
+                </li>
+                <li $!companiesinfo_active><a href="/admin_exclusivereal/estates/companiesinfo/index.aspx">Seznam společností</a></li>
+                <li $!estatemancards_active><a href="/admin_exclusivereal/estates/estatemancards/index.aspx">Seznam realitních poradců</a></li>
+                <li $!regions_active><a href="/admin_exclusivereal/estates/regions/index.aspx">Seznam regionů</a></li>
+                <li $!estatetypes_active><a href="/admin_exclusivereal/estates/estatetypes/index.aspx">Typy nemovitostí</a></li>
+                <li $!estateoffertypes_active><a href="/admin_exclusivereal/estates/estateoffertypes/index.aspx">Typy nabídek</a></li>
+                <li $!currencytypes_active><a href="/admin_exclusivereal/estates/currencytypes/index.aspx">Typy měn</a></li>
+                <li $!pricetypes_active><a href="/admin_exclusivereal/estates/pricetypes/index.aspx">Typy cen</a></li>
+              </ul>

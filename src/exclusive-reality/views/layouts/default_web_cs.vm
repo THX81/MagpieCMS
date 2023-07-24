@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="copyright" content="Company, s. r. o." />
+    <meta name="author" content="ASP.NET: Richard Straka [richard.straka@gmail.com]" />
+    <meta name="author" content="Grafika, XHTML, CSS: Miroslav Malát [mir2001@post.cz]" />
+    <meta name="description" content="Company - Realitní a investiční společnost v Praze. Prodej a pronájem nemovitostí (domy, byty, pozemky, ...)." />
+    <meta name="keywords" content="domy, byty, prodej, pronájem, realitní kancelář, praha" />
+    <link href="$siteroot/css/screen.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <link href="$siteroot/css/print.css" rel="stylesheet" type="text/css" media="print" />
+    <script type="text/javascript" src="$siteroot/js/all.js"></script>
+    <title>$!title - Company - realitní a investiční společnost</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    $!head
+  </head>
+  <body>
+    <div id="balicek2">
+    <div id="balicek1">
+    <div id="balicek">
+      <p class="spaceman">
+        <a href="#menu">k menu &darr;</a> | <a href="#text-box">k obsahu &darr;</a>
+      </p>
+
+<!-- hlavicka -->
+      <div id="hlavicka">
+        <h1><a href="/index.aspx" title="[home page]">Realitní a investiční společnost | COMPANY<span></span></a></h1>
+        <ul>
+            <li><a href="/kontakt/vlozit-nabidku.aspx">vložit nabídku</a></li>
+            <li><a href="/kontakt/vlozit-poptavku.aspx">vložit poptávku</a></li>
+        </ul>
+      </div>
+ 
+      <p id="lang">
+        <a href="/mapa-webu.aspx">mapa webu</a> | #component(LanguageMenu)
+      </p>
+<!-- // hlavicka -->
+
+      <hr class="nod" />
+
+<!-- Hlavní obsah -->
+      <div id="text-box">
+			$childContent
+      </div><!-- // hlavní obsah -->
+
+      <hr class="nod" />
+      <!-- Menu -->
+      <div id="menu">
+#component(TopMenu)
+      </div>
+        
+        <p class="spaceman">
+          <a href="#text-box">k hlavnímu obsahu &uarr;</a>
+        </p>
+      <!-- // menu -->
+
+      <hr class="nod" />
+
+      <div id="paticka">          
+          <p class="flr">
+            <noscript id="spot"><span>tisk (ctrl+p)</span></noscript> | <a href="#balicek">nahoru</a>
+          </p>
+          <p class="fll">
+            &copy; <a href="http://www.company.cz">COMPANY, s. r. o.</a>
+          </p>
+      </div>
+
+    </div><!-- // balicek -->
+    </div><!-- // balicek1 top shd -->
+    </div><!-- // balicek2 btn shd -->
+    
+    $!scripts
+  </body>
+</html>

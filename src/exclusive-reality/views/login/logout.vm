@@ -1,0 +1,3 @@
+<p>You are sucessfully loged out.</p>
+<br />
+$Url.Link('Home page', "%{area='',controller='home', action='index'}")

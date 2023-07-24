@@ -1,0 +1,29 @@
+#pagestree 
+{
+	border:solid 1px #E6E6E6;
+	margin:0px;
+	padding-left:15px;
+	width:231px;
+	font-size: 10px;
+	float:left;
+}
+#pagestree ul 
+{
+	margin:0px;
+	padding:0px;
+}
+#pagestree li
+{
+	margin-top:0px;
+	margin-bottom:0px;
+	padding-top:0px;
+	padding-bottom:0px;
+}
+#pagestree .section_ico 
+{
+	list-style-image:url(/gfx/ico/section.ico);
+}
+#pagestree .page_ico 
+{
+	list-style-image:url(/gfx/ico/page.ico);
+}

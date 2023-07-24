@@ -1,0 +1,15 @@
+﻿        <h3 class="nod">Menu</h3>
+#foreach($node in $Nodes)
+#beforeall
+              <ul>
+#each
+#if($node && $node.Name != "index")
+<li
+#if($originalurl.StartsWith($node.GetUrl(true))) class="active"#end
+>
+<a href="$node.GetUrl(true)">$node.Title</a>
+</li>
+#end
+#afterall
+              </ul>
+#end

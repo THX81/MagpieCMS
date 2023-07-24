@@ -1,0 +1,486 @@
+﻿#capturefor(title) $SelectedProject.GetLocalizedProperties().Name #end
+#capturefor(scripts) <script type="text/javascript" src="/js/viewer.js"></script>  #end
+
+<h1>#$SelectedProject.OrderNumber - $SelectedProject.GetLocalizedProperties().Name</h1>
+<a href="$SelectedProject.GetFirstPhotoLinkForWeb()" rel="viewer">
+    <img src="$SelectedProject.GetFirstPhotoLinkForWeb()&amp;size=2" alt="$SelectedProject.OrderNumber - $SelectedProject" width="240" class="flr" /></a>
+
+#if($SelectedProject.GetLocalizedObject().LocalityDescription)
+    $NexusARFormHelper.EnsureParagraphOverContent($SelectedProject.GetLocalizedObject().LocalityDescription)
+#end
+#if($SelectedProject.GetLocalizedObject().BasicDescription)
+    $NexusARFormHelper.EnsureParagraphOverContent($SelectedProject.GetLocalizedObject().BasicDescription)
+#end
+#if($SelectedProject.GetLocalizedObject().FullDescription)
+    $NexusARFormHelper.EnsureParagraphOverContent($SelectedProject.GetLocalizedObject().FullDescription)
+#end
+#if($SelectedProject.GetLocalizedObject().ProjectsEtapsDescription)
+    $NexusARFormHelper.EnsureParagraphOverContent($SelectedProject.GetLocalizedObject().ProjectsEtapsDescription)
+#end
+
+<h3>#if($CurrentCultureId == 1029)Lokalita#else Locality#end</h3>
+<p>
+#if($SelectedProject.EstateAddressInfo.Street)$SelectedProject.EstateAddressInfo.Street<br />#end
+#if($SelectedProject.EstateAddressInfo.Zip)$SelectedProject.EstateAddressInfo.Zip#end
+#if($SelectedProject.EstateAddressInfo.City)&nbsp;&nbsp;$SelectedProject.EstateAddressInfo.City#end
+#if($SelectedProject.EstateAddressInfo.Region),<br />&nbsp;$SelectedProject.EstateAddressInfo.Region#end
+</p>
+<div class="cleaner"></div>
+<div class="spacer"></div>
+
+
+#foreach($estateType in $EstateTypes)
+    #beforeall
+
+    #each
+        #set($count=0)
+        #set($free=0)
+        #foreach($estate in $SelectedProject.Estates)
+            #if ($estateType.Id == $estate.EstateType.Id && $estate.Publish)
+                #set($count=$count+1)
+                #if ($estate.Saled == false && $estate.Rented == false)
+                    #set($free=$free+1)
+                #end
+            #end
+        #end
+    
+    
+        #if ($count > 0)
+            <h2>$estateType <small>#if($CurrentCultureId == 1029)celkem#else total#end $count, #if($CurrentCultureId == 1029)volné#else free#end $free</small></h2>
+            
+            
+            #foreach($estate in $SelectedProject.Estates)
+                #beforeall
+                    <table cellspacing="0">
+                    <tr>
+                        <th>#if($CurrentCultureId == 1029)Kód#else Code#end</th>
+                        <th>#if($CurrentCultureId == 1029)Typ#else Type#end</th>
+                        <th>#if($CurrentCultureId == 1029)Plocha#else Size#end m<sup>2</sup></th>
+                        <th>#if($CurrentCultureId == 1029)Terasa#else Terrace#end m<sup>2</sup></th>
+                        <th>#if($CurrentCultureId == 1029)Zahrada#else Garden#end m<sup>2</sup></th>
+                        <th>#if($CurrentCultureId == 1029)Cena#else Price#end</th>
+                        <th>#if($CurrentCultureId == 1029)Stav#else State#end</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                #each
+                    #if ($estateType.Id == $estate.EstateType.Id)
+                        <tr>
+                            <td>$estate.EstateExtendedInfo.OrderNumber </td>
+                            <td class="center">#if($estate.EstateProperties.Disposition != "")$estate.EstateProperties.Disposition#else - #end</td>
+                            <td class="center">#if($estate.EstateProperties.FlatSize != "")$estate.EstateProperties.PlaceSize#else - #end</td>
+                            <td class="center">#if($estate.EstateProperties.TeracesSize != "")$estate.EstateProperties.TeracesSize#else - #end</td>
+                            <td class="center">#if($estate.EstateProperties.GardenSize != "")$estate.EstateProperties.GardenSize#else - #end</td>
+                            <td>$NexusARFormHelper.GetFormatedPrice($estate.EstatePriceInfo.PriceValue) $estate.EstatePriceInfo.currencyType</td>
+                            <td>#if ($estate.Saled)
+                                    #if($CurrentCultureId == 1029)Prodáno#else Saled#end
+                                  #elseif ($estate.Rented)
+                                    #if($CurrentCultureId == 1029)Pronajato#else Rented#end
+                                  #elseif ($estate.Reserved)
+                                    #if($CurrentCultureId == 1029)Rezervace#else Reserved#end
+                                  #else
+                                    #if($CurrentCultureId == 1029)Volný#else Free#end
+                                  #end
+                            </td>
+                            <td><a href="$estate.GetLocalizedObject().DetailPageUrl">více</a></td>
+                        </tr>
+                    #end
+                #afterall
+                    </table>
+            #end
+        #end
+        
+        
+    #afterall
+    <div class="cleaner"></div>
+    <div class="spacer"></div>
+#end
+
+
+<h2>#if($CurrentCultureId == 1029)Informace k projektu#else Project informations#end</h2>
+<table cellspacing="0">
+    <tr>
+        $NexusARFormHelper.GetLocalizedPropertyNameWithValue("ForMove", $SelectedProject.ProjectNextInfo, "<th class=\"w240\">{0}</th><td>{1}</td>")
+    </tr>
+    <tr>
+        $NexusARFormHelper.GetLocalizedPropertyNameWithValue("BuildStartDate", $SelectedProject.ProjectNextInfo, "<th>{0}</th><td>{1}</td>")
+    </tr>
+    <tr>
+        $NexusARFormHelper.GetLocalizedPropertyNameWithValue("BuildEndDate", $SelectedProject.ProjectNextInfo, "<th>{0}</th><td>{1}</td>")
+    </tr>
+    <tr>
+        $NexusARFormHelper.GetLocalizedPropertyNameWithValue("SaleStartDate", $SelectedProject.ProjectNextInfo, "<th>{0}</th><td>{1}</td>")
+    </tr>
+    <tr>
+        <th>#if($CurrentCultureId == 1029)Možnost převedení do os. vlastnictví#else Can be in personal ownership#end</th>
+        <td>
+        #if ($SelectedProject.ProjectNextInfo.PersonalRight)
+            #if($CurrentCultureId == 1029)Ano#else Yes#end
+        #else
+            #if($CurrentCultureId == 1029)Ne#else No#end
+        #end
+        </td>
+    </tr>
+    <tr>
+        <th>#if($CurrentCultureId == 1029)Počet objektů v projektu#else Total count of estates in project#end:</th><td>$SelectedProject.Estates.Count</td>
+    </tr>
+</table>
+<div class="cleaner"></div>
+<div class="spacer"></div>
+
+
+#if($SelectedProject.EstateManCard)
+<div class="contact">
+  <h3>$NexusARFormHelper.GetLocalizedPropertyName('EstateManCard', $SelectedProject)</h3>
+  <table cellspacing="0">
+      <tr>
+        #if($CurrentCultureId == 1029)
+          <th>Makléř</th>
+        #else
+          <th>Broker</th>
+        #end
+        <td>$NexusARFormHelper.GetFormatedValue('Title', $SelectedProject.EstateManCard, '{1}') $NexusARFormHelper.GetFormatedValue('FirstName', $SelectedProject.EstateManCard, '{1}') $NexusARFormHelper.GetFormatedValue('LastName', $SelectedProject.EstateManCard, '{1}')</td></tr>
+      $NexusARFormHelper.GetFormatedValue('Email', $SelectedProject.EstateManCard, '<tr><th>{0}</th><td><a href="mailto:{1}">{1}</a></td></tr>')
+      $NexusARFormHelper.GetFormatedValue('Telephone', $SelectedProject.EstateManCard, '<tr><th>{0}</th><td>{1}</td></tr>')
+      $NexusARFormHelper.GetFormatedValue('Mobil', $SelectedProject.EstateManCard, '<tr><th>{0}</th><td>{1}</td></tr>')
+  </table>
+</div>
+#end
+<div class="cleaner"></div>
+<div class="spacer"></div>
+
+
+#if($SelectedProject.DeveloperProjectAttachments)
+  #if($SelectedProject.DeveloperProjectAttachments.Count > 0)
+    <h2>$NexusARFormHelper.GetLocalizedPropertyName('DeveloperProjectAttachments', $SelectedProject)</h2>
+    
+    <ul class="dwnl">
+        #foreach($att in $SelectedProject.DeveloperProjectAttachments)
+          <li class="typ-souboru">$att</li>
+        #end
+    </ul>
+    <div class="cleaner"></div>
+    <div class="spacer"></div>
+  #end
+#end
+
+
+<div id="foto">
+    <h2>$NexusARFormHelper.GetLocalizedPropertyName('DeveloperProjectImages', $SelectedProject)</h2>
+
+  #if ($SelectedProject.GetAllPhotosLinksForWeb().Count > 0)
+    #foreach($img in $SelectedProject.GetAllPhotosLinksForWeb())
+      <a href="$img.Url" rel="viewer"><img src="$img.Url&amp;size=4" alt="$img.Description" /></a>
+    #end
+  #end
+</div>
+
+
+<div class="cleaner"></div>
+<div class="spacer"></div>
+
+<div class="senders fll">
+  <h3>
+  #if($CurrentCultureId == 1029)
+    Odeslat známému
+  #else
+    Send to friend
+  #end
+  </h3>
+  <form method="get" action="/form/ProcessEstateMessage.aspx">
+    <input type="hidden" name="returnurl" value="$CurrentPage.GetUrl(true)" />
+    <input type="hidden" name="messagetype" value="sendfriend" />
+    <input type="hidden" name="detail" value="$detail" />
+    <p>
+      #if($CurrentCultureId == 1029)
+          Pomocí tohoto formuláře můžete zaslat odkaz na tuto stránku Vašemu známému.
+      #else
+          With this form you can send this page link to your friend.
+      #end
+    </p>
+    <table cellspacing="0">
+      <tr>
+        <th>
+        E-mail:
+        </th>
+        <td>
+          <input type="text" name="email"#if($email) value="$email"#end />
+        </td>
+      </tr>
+    </table>
+    <p class="right">
+      #if($CurrentCultureId == 1029)
+      <input type="submit" value="odeslat" class="send" />
+      #else
+      <input type="submit" value="send" class="send" />
+      #end
+    </p>
+  </form>
+#if($result && $messagetype == "sendfriend")
+
+    #if($result=="true")
+        <p><strong>
+        #if($CurrentCultureId == 1029)
+            Email byl odeslán.<br />Děkujeme
+        #else
+            Email was sended.<br />Thank you
+        #end
+        </strong><br /><br /><br /></p>
+    #elseif($result=="false" && $error=="email")
+        <p><strong>
+        #if($CurrentCultureId == 1029)
+            Emailová adresa není správně vyplněná.
+        #else
+            Bad email address.
+        #end
+        </strong><br /><br /><br /></p>
+    #else
+        <p><strong>
+        #if($CurrentCultureId == 1029)
+            Email nebyl z technických důvodů odeslán.<br /><br />Zkuste prosím odeslat později.
+        #else
+            There is unexpected error.<br /><br />Please, try it again later.
+        #end
+        <br /><!--  $error --></strong><br /><br /><br /></p>
+    #end
+    
+#end
+</div>
+
+<div class="senders flr">
+  <h3>#if($CurrentCultureId == 1029)Ozvěte se nám#else Contact us#end</h3>
+  <form method="get" action="/form/ProcessEstateMessage.aspx">
+    <input type="hidden" name="returnurl" value="$CurrentPage.GetUrl(true)" />
+    <input type="hidden" name="messagetype" value="contactusproject" />
+    <input type="hidden" name="detail" value="$detail" />
+    <input type="hidden" name="projectname" value="$SelectedProject.GetLocalizedProperties().Name"/>
+  <p>#if($CurrentCultureId == 1029)Máte-li zájem o tento projekt, kontaktujte nás.#else If you interested about this project, contact us please.#end</p>
+  <table cellspacing="0">
+    <tr>
+      <th>
+  #if($CurrentCultureId == 1029)
+      Vaše jméno:
+  #else
+      Your name:
+  #end
+      </th>
+      <td><input type="text" name="name"#if($name) value="$name"#end /></td>
+    </tr>
+    <tr>
+      <th>
+  #if($CurrentCultureId == 1029)
+      Váš telefon:
+  #else
+      Your phone:
+  #end
+      </th>
+      <td><input type="text" name="phone"#if($phone) value="$phone"#end /></td>
+    </tr>
+    <tr>
+      <th>
+  #if($CurrentCultureId == 1029)
+    Váš e-mail:
+  #else
+    Your e-mail:
+  #end
+      </th>
+      <td><input type="text" name="email"#if($email) value="$email"#end /></td>
+    </tr>
+    <tr>
+      <th>
+  #if($CurrentCultureId == 1029)
+    Poznámka:
+  #else
+    Comment:
+  #end
+      </th>
+      <td><textarea name="comment" style="width:155px;" rows="2">#if($comment) $comment#end</textarea></td>
+    </tr>
+  </table>
+  <p class="right">
+      #if($CurrentCultureId == 1029)
+      <input type="submit" value="odeslat" class="send" />
+      #else
+      <input type="submit" value="send" class="send" />
+      #end
+    </p>
+  </form>
+#if($result && $messagetype == "contactus")
+
+    #if($result == "true")
+        <p><strong>
+        #if($CurrentCultureId == 1029)
+            Email byl odeslán.<br />Děkujeme
+        #else
+            Email was sended.<br />Thank you
+        #end
+        </strong><br /><br /><br /></p>
+    #elseif($result=="false")
+        #if($error == "email_phone_empty")
+            <p><strong>
+            #if($CurrentCultureId == 1029)
+                Musí být vyplněn alespoň email nebo telefon.
+            #else
+                Email or phone are mandatory.
+            #end
+            </strong><br /><br /><br /></p>
+        #elseif($error == "email")
+            <p><strong>
+            #if($CurrentCultureId == 1029)
+                Emailová adresa není správně vyplněná.
+            #else
+                Bad email address.
+            #end
+            </strong><br /><br /><br /></p>
+        #else
+            <p><strong>
+            #if($CurrentCultureId == 1029)
+                Email nebyl z technických důvodů odeslán.<br /><br />Zkuste prosím odeslat později.
+            #else
+                There is unexpected error.<br /><br />Pleas, try it again later.
+            #end
+            <br /><!--  $error --></strong><br /><br /><br /></p>
+        #end
+    #end
+    
+#end
+</div>
+
+
+#if($result)
+
+    <a id="bottom"></a>
+    
+#end
+
+
+
+
+
+
+
+
+
+<!--
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("BasicDescription", $DeveloperProject.GetLocalizedProperties(), "<fieldset><legend>{0}</legend><p>{1}</p></fieldset>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("FullDescription", $DeveloperProject.GetLocalizedProperties(), "<fieldset><legend>{0}</legend>{1}</fieldset>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("LocalityDescription", $DeveloperProject.GetLocalizedProperties(), "<fieldset><legend>{0}</legend>{1}</fieldset>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("ProjectsEtapsDescription", $DeveloperProject.GetLocalizedProperties(), "<fieldset><legend>{0}</legend>{1}</fieldset>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Parking", $DeveloperProject.GetLocalizedProperties(), "<fieldset><legend>{0}</legend>{1}</fieldset>")
+
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("EstateAddressInfo", $DeveloperProject)</legend>
+<ul>
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Street", $DeveloperProject.EstateAddressInfo, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("City", $DeveloperProject.EstateAddressInfo, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Zip", $DeveloperProject.EstateAddressInfo, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Region", $DeveloperProject.EstateAddressInfo, "<li>{0}:{1}</li>")
+</ul>
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("EstateManCard", $DeveloperProject)</legend>
+<ul>
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Title", $DeveloperProject.EstateManCard, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("FirstName", $DeveloperProject.EstateManCard, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("LastName", $DeveloperProject.EstateManCard, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Email", $DeveloperProject.EstateManCard, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Telephone", $DeveloperProject.EstateManCard, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Mobil", $DeveloperProject.EstateManCard, "<li>{0}:{1}</li>")
+</ul>
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("Developer", $DeveloperProject)</legend>
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("FirmName", $DeveloperProject.Developer, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Street", $DeveloperProject.Developer, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("City", $DeveloperProject.Developer, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Zip", $DeveloperProject.Developer, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("State", $DeveloperProject.Developer, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("www", $DeveloperProject.Developer, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Email", $DeveloperProject.Developer, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Telephone", $DeveloperProject.Developer, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Fax", $DeveloperProject.Developer, "<li>{0}:{1}</li>")
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("Investor", $DeveloperProject)</legend>
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("FirmName", $DeveloperProject.Investor, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Street", $DeveloperProject.Investor, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("City", $DeveloperProject.Investor, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Zip", $DeveloperProject.Investor, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("State", $DeveloperProject.Investor, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("www", $DeveloperProject.Investor, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Email", $DeveloperProject.Investor, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Telephone", $DeveloperProject.Investor, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Fax", $DeveloperProject.Investor, "<li>{0}:{1}</li>")
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("ProjectNextInfo", $DeveloperProject)</legend>
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("ForMove", $DeveloperProject.ProjectNextInfo, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("BuildStartDate", $DeveloperProject.ProjectNextInfo, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("BuildEndDate", $DeveloperProject.ProjectNextInfo, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("SaleStartDate", $DeveloperProject.ProjectNextInfo, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("BaseInvestPercents", $DeveloperProject.ProjectNextInfo, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("BuildingSavingPercents", $DeveloperProject.ProjectNextInfo, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("HypoPercents", $DeveloperProject.ProjectNextInfo, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("HypoCompany", $DeveloperProject.ProjectNextInfo, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("PersonalRight", $DeveloperProject.ProjectNextInfo, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("BuildingsInProject", $DeveloperProject.ProjectNextInfo, "<li>{0}:{1}</li>")
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("Flats", $DeveloperProject)</legend>
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Count", $DeveloperProject.Flats, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Smallest", $DeveloperProject.Flats, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Biggest", $DeveloperProject.Flats, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("PriceFrom", $DeveloperProject.Flats, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("PriceTo", $DeveloperProject.Flats, "<li>{0}:{1}</li>")
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("Offices", $DeveloperProject)</legend>
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Count", $DeveloperProject.Offices, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Smallest", $DeveloperProject.Offices, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Biggest", $DeveloperProject.Offices, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("PriceFrom", $DeveloperProject.Offices, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("PriceTo", $DeveloperProject.Offices, "<li>{0}:{1}</li>")
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("Houses", $DeveloperProject)</legend>
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Count", $DeveloperProject.Houses, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Smallest", $DeveloperProject.Houses, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Biggest", $DeveloperProject.Houses, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("PriceFrom", $DeveloperProject.Houses, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("PriceTo", $DeveloperProject.Houses, "<li>{0}:{1}</li>")
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("CommercialAreas", $DeveloperProject)</legend>
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Count", $DeveloperProject.CommercialAreas, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Smallest", $DeveloperProject.CommercialAreas, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("Biggest", $DeveloperProject.CommercialAreas, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("PriceFrom", $DeveloperProject.CommercialAreas, "<li>{0}:{1}</li>")
+$NexusARFormHelper.GetLocalizedPropertyNameWithValue("PriceTo", $DeveloperProject.CommercialAreas, "<li>{0}:{1}</li>")
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("AdditionalProjectObjectsInfo", $DeveloperProject)</legend>
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("BuildingConstructionInfo", $DeveloperProject)</legend>
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("TelecomunicationInfo", $DeveloperProject)</legend>
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("IngSitesInfo", $DeveloperProject)</legend>
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("ElectricityInfo", $DeveloperProject)</legend>
+</fieldset>
+
+<fieldset><legend>$NexusARFormHelper.GetLocalizedPropertyName("FacilitiesInfo", $DeveloperProject)</legend>
+</fieldset>
+
+#foreach($property in $DeveloperProject.GetType().GetProperties())
+#beforeall
+        <ul>
+#each
+            <li>$property.Name : $property.GetValue($DeveloperProject, null)</li>
+#afterall
+        </ul>
+#end
+-->

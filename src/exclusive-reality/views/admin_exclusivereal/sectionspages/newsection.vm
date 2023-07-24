@@ -1,0 +1,46 @@
+﻿#capturefor(title) Správa sekce #end
+
+#capturefor(crumbmenu) <a href="/admin_exclusivereal/">úvodní strana</a> | <a href="/admin_exclusivereal/sectionspages/index.aspx">Sekce / stránky</a> | <strong>Vytvořit novou sekci</strong> #end
+#capturefor(sectionspages_active)class="active"#end
+#capturefor(sectionspages_submenu)
+<ul>
+  <li><a href="/admin_exclusivereal/sectionspages/newpage.aspx" href="Vytvořit novou stránku">Vytvořit novou stránku</a></li>
+  <li class="active"><a href="/admin_exclusivereal/sectionspages/newsection.aspx" href="Vytvořit novou sekci">Vytvořit novou sekci</a></li>
+</ul>
+#end
+#capturefor(custommenu)
+<div id="pagestree">
+#component(SectionsPagesTreeMenu)
+</div>
+#end
+
+
+<div id="right">
+<h2>Vytvoření nové sekce</h2>
+
+#if($flash.errors)
+<ul id="errors">
+#foreach($error in $flash.errors)
+  <li>$error</li>
+#end
+</ul>
+#end
+
+$NexusARFormHelper.FormTag("%{action='CreateSection'}")
+
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "Title", $Section)</div>
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "Name", $Section)</div>
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "OrderPriority", $Section)</div>
+<div>Datum vytvoření: $Section.Created</div>
+<div>$NexusARFormHelper.CreateControl($model, $prefix, "Culture", $Section) (V případě nevyplnění se aplikuje kultura nadřazené/ých sekce/í)</div>
+<div>$NexusARFormHelper.LabelFor("Section.Published", "Publikovat:")$NexusARFormHelper.CheckboxField("Section.Published")</div>
+<div>
+$NexusARFormHelper.LabelFor("Section.ParentSection", "Nadřazená sekce:")
+$NexusARFormHelper.Select("Section.ParentSection", $AllSections, "%{value='Id', text='Title'}")
+</div>
+<br />
+
+$NexusARFormHelper.Submit("Uložit", "%{class='wymupdate'}")
+
+$NexusARFormHelper.EndFormTag()
+</div>

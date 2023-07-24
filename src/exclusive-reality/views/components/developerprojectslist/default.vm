@@ -1,0 +1,44 @@
+﻿#capturefor(title) $CurrentPage.Title #end
+<h2>$CurrentPage.Title</h2>
+
+
+
+
+#foreach($project in $DeveloperProjects)
+#beforeall
+    <table cellspacing="0" class="list">
+#each
+    <tr>
+        <td class="vtop">
+            <a href="?detail=$project.Id">
+                <img src="$project.GetFirstPhotoLinkForWeb()&amp;size=3" alt="#$project.OrderNumber - $project" width="105" /></a>
+        </td>
+        <td>
+            <strong><a href="?detail=$project.Id">#$project.OrderNumber - $project</a></strong><br />
+              #set($minMaxPrice = $project.GetMinMaxPrice())
+              #if($minMaxPrice.MinPrice > 0 || $minMaxPrice.MaxPrice > 0)
+                  #if($CurrentCultureId == 1029)
+                    <em>Cena</em>:
+                  #else
+                    <em>Price</em>:
+                  #end
+                  $NexusARFormHelper.GetFormatedPrice($minMaxPrice.MinPrice) - $NexusARFormHelper.GetFormatedPrice($minMaxPrice.MaxPrice)<br />
+              #end
+              #if($CurrentCultureId == 1029)
+                <em>Lokalita:</em>
+              #else
+                <em>Location:</em>
+              #end
+              $project.EstateAddressInfo.City#if($project.EstateAddressInfo.Region), $project.EstateAddressInfo.Region#end<br />
+              #if($CurrentCultureId == 1029)
+                <em>Popis:</em>
+              #else
+                <em>Description:</em>
+              #end
+                $project.GetLocalizedObject().BasicDescription
+        </td>
+    </tr>
+#afterall
+    </table>
+    $PagerHtml
+#end

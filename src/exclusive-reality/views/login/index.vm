@@ -1,0 +1,25 @@
+﻿
+#if($Flash.error)
+<p>
+<b><font color="red"> $Flash.error </font></b>
+</p>
+#end
+
+<form method="post" action="login.aspx?ReturnUrl=$ReturnUrl">
+
+<fieldset>
+	<legend>Login</legend>
+	
+	<p class="center">
+	    Jméno: <input type="text" id="username" name="username" class="w120" />
+	</p>
+	<p class="center">
+	    Heslo: <input type="password" id="password" name="password" class="w120" />
+	</p>
+	
+	<p class="center">
+	    <input type="submit" class="submit" value="přihlásit &raquo;" />
+	</p>
+	
+</fieldset>
+$Form.EndFormTag()

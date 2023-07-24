@@ -1,0 +1,8 @@
+﻿<h2>Unexpected error happenend</h2>
+
+<p> This is the rescue page and it is supposed to show you a nice message. 
+View the source for more details on the exception, though. </p>
+
+<!--
+${context.LastException.Message}
+-->

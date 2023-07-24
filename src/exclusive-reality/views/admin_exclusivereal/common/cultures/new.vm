@@ -1,0 +1,27 @@
+﻿
+#capturefor(head)
+    <link rel="stylesheet" type="text/css" media="screen" href="$siteroot/js/wymeditor/skins/default/screen.css" />
+    <script type="text/javascript" src="$siteroot/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="$siteroot/js/wymeditor/jquery.wymeditor.pack.js"></script>
+#end
+
+<div>
+<h2>Nová kultura (lokalizace)</h2>
+
+$NexusARFormHelper.FormTag("%{action='create'}")
+
+
+#component(LocalizedPropertiesForm)
+
+<div>
+$NexusARFormHelper.LabelFor("Instance.Lcid", "Kultura:")
+$NexusARFormHelper.Select("Instance.Id", $AllCultureInfo, "%{value='Lcid', text='DisplayName'}")
+</div>
+<div>$NexusARFormHelper.CreateControl($Model, $Prefix, "IsDefault", $Instance)</div>
+<br />
+
+
+$NexusARFormHelper.Submit("Uložit", "%{class='wymupdate'}")
+
+$NexusARFormHelper.EndFormTag()
+</div>

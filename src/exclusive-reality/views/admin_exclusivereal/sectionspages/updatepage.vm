@@ -1,0 +1,22 @@
+﻿#capturefor(title) Správa stránky #end
+
+#capturefor(crumbmenu) <a href="/admin_exclusivereal/">úvodní strana</a> | <a href="/admin_exclusivereal/sectionspages/index.aspx">Sekce / stránky</a> | <strong>Editace stránky "$Page.Title"</strong> #end
+#capturefor(sectionspages_active)class="active"#end
+#capturefor(sectionspages_submenu)
+<ul>
+  <li><a href="/admin_exclusivereal/sectionspages/newpage.aspx" href="Vytvořit novou stránku">Vytvořit novou stránku</a></li>
+  <li><a href="/admin_exclusivereal/sectionspages/newsection.aspx" href="Vytvořit novou sekci">Vytvořit novou sekci</a></li>
+</ul>
+#end
+#capturefor(custommenu)
+<div id="pagestree">
+#component(SectionsPagesTreeMenu)
+</div>
+#end
+
+
+
+<div id="right">
+<h2>Editace stránky "$Page.Title"</h2>
+<strong>Stránka byla úspěšně uložena.</strong>
+</div>

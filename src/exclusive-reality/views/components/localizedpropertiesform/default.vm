@@ -1,0 +1,43 @@
+﻿#if ($LocalizationModel)
+#capturefor(head)
+    <link rel="stylesheet" type="text/css" media="screen" href="$siteroot/css/tabber.css" />
+    <script type="text/javascript" src="$siteroot/js/tabber.js"></script>
+#end
+
+<div class="tabber">
+#if (!$Instance || $Instance.LocalizedObjects.Count == 0)
+    #foreach($cultureItem in $AllCultures)
+        <div class="tabbertab" title="$cultureItem">
+
+            #foreach($prop in $LocalizationModel.Properties)
+                #if($NexusARFormHelper.CanHandle($prop) && $prop.Property.Name != "DetailPageUrl")
+                <div>$NexusARFormHelper.CreateControl($LocalizationModel, "$LocalizationPrefix[$cultureItem.Id]", $prop.Property.Name, $Instance)</div>
+                #end
+            #end           
+            #foreach($prop in $LocalizationModel.BelongsTo)
+                $NexusARFormHelper.HiddenField("LocalizationInstances[$cultureItem.Id].$prop.Property.Name")
+            #end           
+        </div>
+    #end
+
+#else
+
+    #set($index = 0)
+    #foreach($inst in $Instance.LocalizedObjects)
+        <div class="tabbertab" title="$inst.Culture">
+            $NexusARFormHelper.HiddenField("${LocalizationPrefix}[$index].Id")
+
+            <!--Nastaví se URL stránky-->
+            $NexusARFormHelper.HiddenField("$LocalizationPrefix[$index].DetailPageUrl", $Instance.GetUrl($inst.Culture.Id))
+
+            #foreach($prop in $LocalizationModel.Properties)
+                #if($NexusARFormHelper.CanHandle($prop) && $prop.Property.Name != "DetailPageUrl")
+                <div>$NexusARFormHelper.CreateControl($LocalizationModel, "$LocalizationPrefix[$index]", $prop.Property.Name, $inst)</div>
+                #end
+            #end           
+        </div>
+        #set($index = $index + 1)
+    #end
+#end
+</div>
+#end

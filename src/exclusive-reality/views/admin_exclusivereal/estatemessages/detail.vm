@@ -1,0 +1,29 @@
+﻿
+<div>
+<h2>Detail - "$Instance"</h2>
+
+<p>$Instance.MessageType vygenerována: $Instance.Created<br />
+<br />
+== $Instance.MessageType nemovitosti ==<br />
+----------------------------------------<br />
+Typ nemovitosti: $Instance.EstateType/$Instance.EstateOfferType<br />
+----------------------------------------<br />
+Velikost nemovitosti: $Instance.Ps<br />
+----------------------------------------<br />
+Cena nemovitosti:$Instance.PriceFrom - $Instance.PriceTo<br />
+----------------------------------------"<br />
+Popis nemovitosti:<br />
+$Instance.Description<br />
+----------------------------------------<br />
+<br />
+== Kontaktní adresa: ==<br />
+----------------------------------------<br />
+Jméno a příjmení: $Instance.FirstName $Instance.LastName<br />
+----------------------------------------<br />
+Telefon: $Instance.Phone<br />
+----------------------------------------<br />
+Mail: $Instance.Email<br />
+----------------------------------------</p>
+
+
+</div>

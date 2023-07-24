@@ -1,0 +1,64 @@
+﻿#if($CurrentCultureId == 1029)
+  <h2>Novinky</h2>
+#else
+  <h2>News</h2>
+#end  
+
+#foreach($NewEstateEstate in $New3Estates)
+#beforeall
+<div class="helper">
+#each
+    <div id="hp-recommend">
+        <a href="$NewEstateEstate.GetLocalizedObject().DetailPageUrl"><img src="$NewEstateEstate.GetFirstPhotoLinkForWeb()&size=2" alt="#$NewEstateEstate.EstateExtendedInfo.OrderNumber $NewEstateEstate.GetLocalizedObject().Name" width="160" height="120" /></a>
+        <h2><a href="$NewEstateEstate.GetLocalizedObject().DetailPageUrl">$NewEstateEstate.EstateOfferType, $NewEstateEstate.EstateType</a></h2>
+        <p>
+            <strong>#if($CurrentCultureId == 1029)Kat. č.#else Catalog. no.#end</strong>: #$NewEstateEstate.EstateExtendedInfo.OrderNumber<br />
+            <strong>#if($CurrentCultureId == 1029)Lokalita#else Locality#end</strong>: #if($NewEstateEstate.EstateAddressInfo.Region)$NewEstateEstate.EstateAddressInfo.Region#end<br />
+            <strong>#if($CurrentCultureId == 1029)Cena#else Price#end</strong>:
+            #if($NewEstateEstate.EstatePriceInfo.PriceValue && $NewEstateEstate.EstatePriceInfo.CurrencyType)
+                $NexusARFormHelper.GetFormatedPrice($NewEstateEstate.EstatePriceInfo.PriceValue) $NewEstateEstate.EstatePriceInfo.CurrencyType  #if($NewEstateEstate.EstatePriceInfo.PriceType)$NewEstateEstate.EstatePriceInfo.PriceType#end<br />
+            #end 
+            #if($HotTipEstate.DeveloperProject)
+                <strong> #if($CurrentCultureId == 1029) Developerský projekt #else Developer project</a> #end </strong>: $HotTipEstate.DeveloperProject.GetLocalizedObject().Name<br />
+            #end 
+        </p>
+    </div>
+#afterall
+</div>
+#end
+
+
+
+
+#foreach($NewEstateEstate in $NewEstates)
+    #beforeall
+    <h3 class="cleaner">#if($CurrentCultureId == 1029)Další nemovitosti v nabídkce#else Other properties#end</h3>
+    <table cellspacing="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>#if($CurrentCultureId == 1029)Lokalita/název#else Locality#end</th>
+          <th>#if($CurrentCultureId == 1029)Velikost#else Size#end</th>
+          <th>#if($CurrentCultureId == 1029)Cena#else Price#end</th>
+	    </tr>
+      </thead>
+    #each
+        <tr>
+          <td>#$NewEstateEstate.EstateExtendedInfo.OrderNumber&nbsp;</td>
+          <td><a href="$NewEstateEstate.GetLocalizedObject().DetailPageUrl">$NewEstateEstate.GetLocalizedObject().Name</a></td>
+          <td>$NewEstateEstate.EstateProperties.PlaceSize&nbsp;</td>
+          <td>
+            #if($NewEstateEstate.EstatePriceInfo.PriceValue && $NewEstateEstate.EstatePriceInfo.CurrencyType)
+             $NexusARFormHelper.GetFormatedPrice($NewEstateEstate.EstatePriceInfo.PriceValue) $NewEstateEstate.EstatePriceInfo.CurrencyType  #if($NewEstateEstate.EstatePriceInfo.PriceType)$NewEstateEstate.EstatePriceInfo.PriceType#end
+            #end
+          &nbsp;</td>
+        </tr>
+    #afterall
+    </table>
+
+    <p class="right">
+    #if($CurrentCultureId == 1029)<a href="/nabidka/index.aspx" class="ico">Více z naší nabídky</a>#else<a href="/en/proposal/index.aspx" class="ico">More from our offer</a>#end
+    </p>
+    <hr class="hid cleaner" />
+    <div class="spacer"></div>
+#end

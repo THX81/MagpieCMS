@@ -1,0 +1,5 @@
+﻿#capturefor(title) Úvodní strana #end
+#capturefor(crumbmenu) <strong>úvodní strana</strong> #end
+#capturefor(admin_exclusivereal_active)class="active"#end
+
+<p>Vítejte v administraci stránek www.company.cz.</p>

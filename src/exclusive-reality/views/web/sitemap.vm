@@ -1,0 +1,40 @@
+﻿#capturefor(title) $CurrentPage.Title #end
+
+#capturefor(scripts)
+<!-- Here you can include some inline javascript that will be added to the <head> element -->
+<!--<script type="text/javascript">/*<![CDATA[*/
+sayHello();
+function sayHello() 
+{
+	return alert("Hello");
+}
+/* ]]> */</script>-->
+#end
+
+#capturefor(head)
+<!-- Here you can include some content to appear on the layout, inside head. For example, stylesheets -->
+#end
+
+
+<div id="right">
+<h2>$CurrentPage.Title</h2>
+#if($CurrentPage.Contents)
+    $CurrentPage.Contents
+#end
+
+#component(Sitemap)
+  
+</div><!-- //right -->
+
+
+<div id="left">
+#component(LeftActualities)
+#component(Address)
+</div> <!-- //left -->
+
+<div class="cleaner" />
+
+
+
+
+

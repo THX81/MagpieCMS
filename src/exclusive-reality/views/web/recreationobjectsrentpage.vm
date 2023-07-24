@@ -1,0 +1,33 @@
+﻿#capturefor(title) $CurrentPage.Title #end
+
+#capturefor(scripts)
+<!-- Here you can include some inline javascript that will be added to the <head> element -->
+<!--<script type="text/javascript">/*<![CDATA[*/
+sayHello();
+function sayHello() 
+{
+	return alert("Hello");
+}
+/* ]]> */</script>-->
+#end
+
+#capturefor(head)
+<!-- Here you can include some content to appear on the layout, inside head. For example, stylesheets -->
+#end
+
+
+<div id="right">
+#component(EstatesRepeater with "EstateTypeId=7" "EstateOfferTypeId=2" "ForeignProperty=0")
+</div><!-- //right -->
+
+
+<div id="left">
+#component(LeftEstatesMenu)
+</div> <!-- //left -->
+
+<div class="cleaner" />
+
+
+
+
+

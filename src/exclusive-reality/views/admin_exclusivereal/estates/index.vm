@@ -1,0 +1,12 @@
+﻿#capturefor(title) Správa nemovitostí #end
+
+#capturefor(crumbmenu) <a href="/admin_exclusivereal/">úvodní strana</a> | <strong>Správa Inzerátů</strong> #end
+#capturefor(estates_active)class="active"#end
+#capturefor(estates_submenu)
+        #component(EstatesAdminMenu)
+#end
+
+
+<div id="right">
+
+</div>

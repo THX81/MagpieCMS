@@ -1,0 +1,87 @@
+﻿#capturefor(title) $ClassLocalization.ItemsText #end
+
+#capturefor(crumbmenu) <a href="/admin_exclusivereal/">úvodní strana</a> | <a href="/admin_exclusivereal/estates/index.aspx">Správa Inzerátů</a> | <strong>$ClassLocalization.ItemsText</strong> #end
+#capturefor(estates_active)class="active"#end
+#capturefor(regions_active)class="active"#end
+#capturefor(estates_submenu)
+        #component(EstatesAdminMenu)
+#end
+
+
+#capturefor(head)
+    <link rel="stylesheet" type="text/css" media="screen" href="$siteroot/js/wymeditor/skins/default/screen.css" />
+    <script type="text/javascript" src="$siteroot/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="$siteroot/js/wymeditor/jquery.wymeditor.pack.js"></script>
+#end
+
+<div>
+<h2>Nová položka "$ClassLocalization.ItemText"</h2>
+
+$NexusARFormHelper.FormTag("%{action='create', enctype='multipart/form-data'}")
+
+
+
+#foreach($subModel in $NexusARFormHelper.GetModelHierarchy($Model, $Instance))
+#if($subModel.IsNestedType)$Html.FieldSet($NexusARFormHelper.GetLocalizedName($Model.Type, $subModel.Type))#end
+
+#if(!$subModel.IsNestedType)
+#component(LocalizedPropertiesForm with "LocalizationModel=$LocaleModel" "LocalizationPrefix=$LocalePrefix")
+#end
+
+#foreach($prop in $subModel.Properties)
+#if($NexusARFormHelper.CanHandle($prop))
+<div>$NexusARFormHelper.CreateControl($subModel, "$Prefix", $prop.Property.Name, $Instance)</div>
+#end
+#end           
+
+#foreach($prop in $subModel.BelongsTo)
+#if($NexusARFormHelper.CanHandle($prop))
+<div>$NexusARFormHelper.CreateControl($subModel, "$Prefix", $prop.Property.Name, $Instance)</div>
+#end
+#end
+
+
+
+
+
+#foreach($prop in $subModel.OneToOnes)
+#if($NexusARFormHelper.CanHandle($prop))
+#set($oneToOneModel = $NexusARFormHelper.GetModelFromType($prop.OneToOneAtt.MapType))
+$Html.FieldSet($NexusARFormHelper.GetLocalizedName($subModel.Type, $prop.OneToOneAtt.MapType))
+
+$NexusARFormHelper.HiddenField("${Prefix}.${prop.Property.Name}.Id")
+
+
+#if(!$oneToOneModel.IsNestedType)
+#component(LocalizedPropertiesForm with "LocalizationModel=$NexusARFormHelper.GetLocaleModel($oneToOneModel)" "LocalizationPrefix=OneToOneProperty_${prop.Property.Name}_${LocalePrefix}")
+#end
+
+
+#foreach($oneToOneProp in $oneToOneModel.Properties)
+#if($NexusARFormHelper.CanHandle($oneToOneProp))
+<div>$NexusARFormHelper.CreateControl($oneToOneModel, "$Prefix.$prop.Property.Name", $oneToOneProp.Property.Name, $Instance)</div>
+#end
+#end           
+
+
+$Html.EndFieldSet()
+#end
+#end
+
+
+
+
+#if($subModel.IsNestedType)$Html.EndFieldSet()#end
+#end
+
+
+
+
+$NexusARFormHelper.Submit("Uložit", "%{class='wymupdate'}")
+$NexusARFormHelper.EndFormTag()
+
+
+$NexusARFormHelper.FormTag("%{action='list'}")
+$NexusARFormHelper.Submit("Zpět")
+$NexusARFormHelper.EndFormTag()
+</div>

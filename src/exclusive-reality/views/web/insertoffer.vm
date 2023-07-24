@@ -1,0 +1,177 @@
+﻿#capturefor(title) $CurrentPage.Title #end
+
+#capturefor(scripts)
+<!-- Here you can include some inline javascript that will be added to the <head> element -->
+<!--<script type="text/javascript">/*<![CDATA[*/
+sayHello();
+function sayHello() 
+{
+	return alert("Hello");
+}
+/* ]]> */</script>-->
+#end
+
+#capturefor(head)
+<!-- Here you can include some content to appear on the layout, inside head. For example, stylesheets -->
+#end
+
+
+<div id="right">
+<h2>$CurrentPage.Title</h2>
+
+
+#if($result)
+
+    #if($result=="true")
+        #if($CurrentCultureId == 1029)
+            <p><br />Nabídka byla úspěšně odeslána.<br />Děkujeme</p>
+        #else
+            <p><br />Offer sucessfully sended.<br />Thank you</p>
+        #end
+    #else
+        #if($CurrentCultureId == 1029)
+            <p>Nabídka nebyla z technických důvodů odeslána.<br /><br />Zkuste prosím odeslat nabídku později.<br /><!--  $error --></p>
+        #else
+            <p>Offer not sucessfully sended by technical problems.<br /><br />Please, try it again later.<br /><!--  $error --></p>
+        #end
+    #end
+
+#else
+$CurrentPage.Contents
+
+<form action="/form/ProcessEstateMessage.aspx" method="get" class="search">
+  <input type="hidden" name="returnurl" value="$CurrentPage.GetUrl(true)" />
+  <input type="hidden" name="messagetype" value="insertoffer" />
+  <fieldset id="pch">
+    <legend>
+        #if($CurrentCultureId == 1029)
+            Typ nemovitosti
+        #else
+            Type of property
+        #end
+    </legend>
+    <select name="estatetype">
+        #if($CurrentCultureId == 1029)
+          <option value="byty">byty</option>
+          <option value="rodinné domy">rodinné domy</option>
+          <option value="pozemky">pozemky</option>
+        #else
+          <option value="flats">flats</option>
+          <option value="houses">houses</option>
+          <option value="properties">properties</option>
+        #end
+    </select>
+    <select name="estateoffertype">
+        #if($CurrentCultureId == 1029)
+          <option value="pronájem">pronájem</option>
+          <option value="prodej">prodej</option>
+        #else
+          <option value="rent">rent</option>
+          <option value="sale">sale</option>
+        #end
+    </select>
+  </fieldset>
+
+  <fieldset id="ps">
+    <legend>
+        #if($CurrentCultureId == 1029)
+            Velikost nemovitosti
+        #else
+            Size of property
+        #end
+    </legend>
+#if($CurrentCultureId == 1029)
+    <label for="ps01"><input type="checkbox" id="ps01" name="ps1" value="garsoniéra" /> garsoniéra</label>
+    <label for="ps02"><input type="checkbox" id="ps02" name="ps2" value="1+kk" /> 1+kk</label>
+    <label for="ps03"><input type="checkbox" id="ps03" name="ps3" value="1+1" /> 1+1</label>
+    <label for="ps04"><input type="checkbox" id="ps04" name="ps4" value="2+kk" /> 2+kk</label>
+    <label for="ps05"><input type="checkbox" id="ps05" name="ps5" value="2+1" /> 2+1</label>
+    <label for="ps06"><input type="checkbox" id="ps06" name="ps6" value="3+kk" /> 3+kk</label>
+    <label for="ps07"><input type="checkbox" id="ps07" name="ps7" value="3+1" /> 3+1</label>
+    <label for="ps08"><input type="checkbox" id="ps08" name="ps8" value="4+kk" /> 4+kk</label>
+    <label for="ps09"><input type="checkbox" id="ps09" name="ps9" value="4+1" /> 4+1</label><!--[if lte IE 6]><br class="cleaner" /><![endif]-->
+    <label for="ps10"><input type="checkbox" id="ps10" name="ps10" value="5 a více" /> 5 a více</label>
+#else
+    <label for="ps01"><input type="checkbox" id="ps01" name="ps1" value="one-room flat" /> one-room flat</label>
+    <label for="ps02"><input type="checkbox" id="ps02" name="ps2" value="1+kk" /> 1+kitchen corner+living room</label>
+    <label for="ps03"><input type="checkbox" id="ps03" name="ps3" value="1+1" /> 1+1</label>
+    <label for="ps04"><input type="checkbox" id="ps04" name="ps4" value="2+kk" /> 2+kitchen corner+living room</label>
+    <label for="ps05"><input type="checkbox" id="ps05" name="ps5" value="2+1" /> 2+1</label>
+    <label for="ps06"><input type="checkbox" id="ps06" name="ps6" value="3+kk" /> 3+kitchen corner+living room</label>
+    <label for="ps07"><input type="checkbox" id="ps07" name="ps7" value="3+1" /> 3+1</label>
+    <label for="ps08"><input type="checkbox" id="ps08" name="ps8" value="4+kk" /> 4+kitchen corner+living room</label>
+    <label for="ps09"><input type="checkbox" id="ps09" name="ps9" value="4+1" /> 4+1</label><!--[if lte IE 6]><br class="cleaner" /><![endif]-->
+    <label for="ps10"><input type="checkbox" id="ps10" name="ps10" value="5 and more" /> 5 and more</label>
+#end
+  </fieldset>
+
+  <fieldset id="pp">
+#if($CurrentCultureId == 1029)
+    <legend>Cena nemovitosti</legend>
+    od <input type="text" name="pricefrom" />
+    do <input type="text" name="priceto" />
+#else
+    <legend>Price of property</legend>
+    from <input type="text" name="pricefrom" />
+    to <input type="text" name="priceto" />
+#end
+  </fieldset>
+
+
+  <fieldset id="desc">
+#if($CurrentCultureId == 1029)
+    <legend>Popis nemovitosti</legend>
+    <label for="desc">
+			Město, ulice, stáří nemovitosti, velikost v m<sup>2</sup>, typ domu, zařízení<br />
+			<textarea name="description" id="desc"></textarea>
+  	</label>
+#else
+    <legend>Property description</legend>
+    <label for="desc">
+			City, street, property age, size in m<sup>2</sup>, type of building, eguipment<br />
+			<textarea name="description" id="desc"></textarea>
+  	</label>
+#end
+  </fieldset>
+
+  <fieldset>
+#if($CurrentCultureId == 1029)
+    <legend>Informace o vás</legend>
+    <label for="info01">Jméno:</label> <input type="text" name="firstname" id="info01" />
+    <label for="info02">Příjmení:</label> <input type="text" name="lastname" id="info02" />
+    <label for="info03">Telefon:</label> <input type="text" name="phone" id="info03" />
+    <label for="info04">Email:</label> <input type="text" name="email" id="info04" />
+#else
+    <legend>Informations about you</legend>
+    <label for="info01">First name:</label> <input type="text" name="firstname" id="info01" />
+    <label for="info02">Last name:</label> <input type="text" name="lastname" id="info02" />
+    <label for="info03">Phone:</label> <input type="text" name="phone" id="info03" />
+    <label for="info04">Email:</label> <input type="text" name="email" id="info04" />
+#end
+  </fieldset>
+
+#if($CurrentCultureId == 1029)
+  <input type="submit" value="Odeslat" class="send" />
+#else
+  <input type="submit" value="Send" class="send" />
+#end
+  
+</form>
+#end
+
+
+
+</div><!-- //right -->
+
+
+<div id="left">
+#component(LeftActualities)
+#component(Address)
+</div> <!-- //left -->
+
+<div class="cleaner" />
+
+
+
+
+

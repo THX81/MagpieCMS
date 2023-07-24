@@ -1,0 +1,44 @@
+﻿#capturefor(title) HTTP 404 #end
+<div id="right">
+<h1>Stránka nebyla nalezena (chybové hlášení HTTP 404)</h1>
+<p>Je nám líto, ale požadovaná stránka nebyla nalezena. Pravděpodobně byla odstraněna, přemístěna nebo přejmenována, případně byl nesprávně zadán odkaz.</p>
+
+<!--<p>Doporučujeme Vám provézt následující kroky: 
+    <ul>
+        <li>zkontrolujte správnost zadaného odkazu</li>
+        <li>přejděte na úvodní stranu a dál pokračujte odtud</li>
+        <li>použijte mapu serveru, která obsahuje všechny dostupné stránky</li>
+    </ul>
+</p>-->
+
+Děkujeme.
+
+<hr />
+  
+<h1>The requested page wasn't found (404)</h1>
+<p>We are sorry, the page or file could not be found. The address or link may be invalid or outdated.</p>
+
+<!--<p>Please try one of the following: 
+    <ul>
+        <li>check the validity of the link</li>
+        <li>go back to the English Home Page and continue from there</li>
+        <li>check the Site Map for the requested page</li>
+    </ul>
+</p>-->
+
+Thank you.
+
+</div><!-- //right -->
+
+
+<div id="left">
+#component(LeftActualities)
+#component(Address)
+</div> <!-- //left -->
+
+<div class="cleaner" />
+$originalurl
+
+
+
+
